@@ -1,16 +1,14 @@
 {
-  "dependencies": {
-    "express": "^4.19.1",
-    "expressjs": "^1.0.1"
-  },
   "name": "hondaapi",
   "version": "1.0.0",
+  "description": "This is a project to create an API for my last degree project.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Pablo Cabello",
   "license": "ISC",
-  "description": ""
+  "dependencies": {
+    "express": "^4.19.1"
+  }
 }
