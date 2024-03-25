@@ -173,7 +173,7 @@ INSERT INTO Motores VALUES (DEFAULT, "ED (CVCC)", "Gasolina", "L4, SOHC, 12v, CV
 INSERT INTO Motores VALUES (DEFAULT, "EF (CVCC)", "Gasolina", "L4, SOHC, 12v, CVCC, PGM-CARB, carburador doble", 1599, "8:1", "74 mm x 93 mm (2.91 in x 3.66 in)", "82CV (60 kw) @ 5300 rpm", "89 lb/ft (121 Nm) @ 3000 rpm");
 INSERT INTO Motores VALUES (DEFAULT, "EJ (CVCC)", "Gasolina", "L4, SOHC, 12v, CVCC, PGM-CARB, carburador triple", 1335, "7.9:1", "72 mm x 82 mm (2.83 in x 3.23 in)", "68CV (50 kW) @ 5000 rpm", "77 lb/ft (104 Nm) @ 3000 rpm");
 INSERT INTO Motores VALUES (DEFAULT, "EK1 (CVCC)", "Gasolina", "L4, SOHC, 12v, CVCC, PGM-CARB, carburador triple", 1751, "8.8:1", "77 mm x 94 mm (3.03 in x 3.70 in)", "75CV (55 kW) @ 4500 rpm", "96 lb/pie (130 Nm) @ 3000 rpm");
-INSERT INTO Motores VALUES (DEFAULT, "EL (CVCC)", "Gasolina", "L4, SOHC, 8v, CVCC, PGM-CARB, carburador doble", 1602, "8.4:1", "77 mm x 86 mm (3.03 in x 3.39 in)", "79CV (58 kW) @ 4500 rpm", "97 lb/pie (132 Nm) @ 3000 rpm");
+INSERT INTO Motores VALUES (DEFAULT, "EL", "Gasolina", "L4, SOHC, 8v, PGM-CARB, carburador doble", 1602, "8.4:1", "77 mm x 86 mm (3.03 in x 3.39 in)", "79CV (58 kW) @ 4500 rpm", "97 lb/pie (132 Nm) @ 3000 rpm");
 INSERT INTO Motores VALUES (DEFAULT, "EM (CVCC)", "Gasolina", "L4, SOHC, 12v, CVCC, PGM-CARB, carburador triple", 1487, "8.8:1", "74 mm × 86.5 mm (2.91 in × 3.41 in)", "52CV (39 kW) @ 5000 rpm (1980), 63CV (47 kW) @ 5000 rpm (1981 - 1983)", "68 lb/ft (92 Nm) @ 3000 rpm (1980), 77 lb/ft (104 Nm) @ 3000 rpm (1981 - 1983)");
 INSERT INTO Motores VALUES (DEFAULT, "EP (CVCC)", "Gasolina", "L4, SOHC, 12v, CVCC, PGM-CARB, carburador triple", 1601, "8.8:1", "77 mm x 86 mm (3.03 in x 3.39 in)", "94CV (70 kw) @ 5300 rpm", "98 lb/ft (132 Nm) @ 3000 rpm");
 INSERT INTO Motores VALUES (DEFAULT, "ES1 (CVCC)", "Gasolina", "L4, SOHC, 12v, CVCC, PGM-CARB, carburador doble", 1829, "8.8:1", "77 mm x 94 mm (3.03 in x 3.7 in)", "102CV (75 kW) @ 5500 rpm", "104 lb/ft (141 Nm) @ 4000 rpm");
@@ -423,6 +423,50 @@ INSERT INTO Motorizaciones VALUES ("11", "147", "2022 - Presente");
 INSERT INTO Motorizaciones VALUES ("11", "127", "2023 - Presente");
 INSERT INTO Motorizaciones VALUES ("11", "128", "2022 - Presente");
 INSERT INTO Motorizaciones VALUES ("11", "165", "2023 - Presente");
+
+-- Motorizaciones primera generación Accord
+
+
+
+-- Motorizaciones segunda generación Accord
+
+
+
+-- Motorizaciones tercera generación Accord
+
+
+
+-- Motorizaciones cuarta generación Accord
+
+
+
+-- Motorizaciones quinta generación Accord
+
+
+
+-- Motorizaciones sexta generación Accord
+
+
+
+-- Motorizaciones séptima generación Accord
+
+
+
+-- Motorizaciones octava generación Accord
+
+
+
+-- Motorizaciones novena generación Accord
+
+
+
+-- Motorizaciones décima generación Accord
+
+
+
+-- Motorizaciones undécima generación Accord
+
+
 
 -- Motorizaciones primera generación CRX
 
