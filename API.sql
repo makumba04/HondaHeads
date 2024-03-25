@@ -23,13 +23,13 @@ CREATE TABLE Modelos (
 
 CREATE TABLE Motorizaciones (
     ModeloID INT NOT NULL,
-    CodigoMotor VARCHAR(15) NOT NULL,
+    CodigoMotorID INT NOT NULL,
     PeriodoUso VARCHAR(50)
 );
 
 -- IMPORTANTE!! Añadir los FK a la tabla de motorizaciones para que funcione la estructura
 
-ALTER TABLE Motorizaciones ADD FOREIGN KEY (CodigoMotor) REFERENCES Motores(CodigoMotor);
+ALTER TABLE Motorizaciones ADD FOREIGN KEY (CodigoMotorID) REFERENCES Motores(ID);
 ALTER TABLE Motorizaciones ADD FOREIGN KEY (ModeloID) REFERENCES Modelo(ID);
 
 -- INSERTAR VALORES (MODELOS)
@@ -188,6 +188,7 @@ INSERT INTO Motores VALUES (DEFAULT, "EY (CVCC)", "Gasolina", "L4, SOHC, 12v, CV
 INSERT INTO Motores VALUES (DEFAULT, "F18A", "Gasolina", "L4, SOHC, 16v, PGM-FI, Inyección multipunto", 1849, "9:1", "85 mm x 81.5 mm (3.35 in x 3.21 in)", "105CV (77 kW) @ 6000 rpm", "106 lb/ft (143 Nm) @ 4000 rpm");
 INSERT INTO Motores VALUES (DEFAULT, "F18B2", "Gasolina", "L4, SOHC, 16v, VTEC-E + sistema IAB (Sistema de bypass de admisión de aire), PGM-FI, Inyección multipunto", 1849, "9.3:1", "85 mm x 81.5 mm (3.35 in x 3.21 in)", "136CV (101 kW) @ 6100 rpm", "124 lb/ft (168 Nm) @ 5000 rpm");
 INSERT INTO Motores VALUES (DEFAULT, "F20A", "Gasolina", "L4, SOHC, 16v, PGM-FI, Inyección multipunto", 1997, "9.5:1", "85 mm x 88 mm (3.35 in x 3.46 in)", "133CV (99 kW) @ 5300 rpm", "132 lb/ft (179 Nm) @ 5000 rpm");
+INSERT INTO Motores VALUES (DEFAULT, "F20A4", "Gasolina", "L4, SOHC, 16v, PGM-FI, Inyección multipunto", 1997, "9.5:1", "85 mm x 88 mm (3.35 in x 3.46 in)", "133CV (99 kW) @ 6000 rpm", "132 lb/ft (179 Nm) @ 3700 rpm");
 INSERT INTO Motores VALUES (DEFAULT, "F20A DOHC", "Gasolina", "L4, DOHC, 16v, PGM-FI, Inyección multipunto", 1997, "9.5:1", "85 mm x 88 mm (3.35 in x 3.46 in)", "152CV (113 kW) @ 6000 rpm", "136 lb/ft (185 Nm) @ 5000 rpm");
 INSERT INTO Motores VALUES (DEFAULT, "F20B", "Gasolina", "L4, DOHC, 16v, VTEC, PGM-FI, Inyección multipunto", 1997, "11.1:1", "85 mm x 88 mm (3.35 in x 3.46 in)", "151CV (111 kW) @ 6500 rpm", "137 lb/ft (186 Nm) @ 4000 rpm");
 INSERT INTO Motores VALUES (DEFAULT, "F20B3", "Gasolina", "L4, SOHC, 16v, VTEC, PGM-FI, Inyección multipunto", 1997, "9:1", "85 mm x 88 mm (3.35 in x 3.46 in)", "136CV (100 kW) @ 6500 rpm", "137 lb/ft (186 Nm) @ 4000 rpm");
@@ -309,46 +310,205 @@ INSERT INTO Motorizaciones VALUES ("1", "68", "1975 - 1979");
 
 -- Motorizaciones segunda generación de Civic
 
-INSERT INTO Motorizaciones VALUES ("2", "70", "1980-1983");
-INSERT INTO Motorizaciones VALUES ("2", "73", "1980-1983");
+INSERT INTO Motorizaciones VALUES ("2", "70", "1980 - 1983");
+INSERT INTO Motorizaciones VALUES ("2", "73", "1980 - 1983");
 
 -- Motorizaciones tercera generación de Civic
 
-INSERT INTO Motorizaciones VALUES ("3", "79", "1983-1986");
-INSERT INTO Motorizaciones VALUES ("3", "35", "1983-1986");
-INSERT INTO Motorizaciones VALUES ("3", "37", "1985-1987");
-INSERT INTO Motorizaciones VALUES ("3", "38", "1985-1989");
+INSERT INTO Motorizaciones VALUES ("3", "79", "1984 - 1986");
+INSERT INTO Motorizaciones VALUES ("3", "35", "1984 - 1986");
+INSERT INTO Motorizaciones VALUES ("3", "37", "1985 - 1987");
+INSERT INTO Motorizaciones VALUES ("3", "38", "1985 - 1987");
 
 -- Motorizaciones cuarta generación de Civic
 
-INSERT INTO Motorizaciones VALUES ("4", "26", "1988-1990");
-INSERT INTO Motorizaciones VALUES ("4", "27", "1988-1991");
-INSERT INTO Motorizaciones VALUES ("4", "29", "1987-1991");
-INSERT INTO Motorizaciones VALUES ("4", "41", "1988-1991");
-INSERT INTO Motorizaciones VALUES ("4", "42", "1988-1991");
-INSERT INTO Motorizaciones VALUES ("4", "53", "1988-1991");
-INSERT INTO Motorizaciones VALUES ("4", "55", "1988-1991");
-INSERT INTO Motorizaciones VALUES ("4", "165", "1989-1991");
-INSERT INTO Motorizaciones VALUES ("4", "6", "1988-1991");
+INSERT INTO Motorizaciones VALUES ("4", "26", "1988 - 1990");
+INSERT INTO Motorizaciones VALUES ("4", "27", "1988 - 1991");
+INSERT INTO Motorizaciones VALUES ("4", "29", "1987 - 1991");
+INSERT INTO Motorizaciones VALUES ("4", "41", "1988 - 1991");
+INSERT INTO Motorizaciones VALUES ("4", "42", "1988 - 1991");
+INSERT INTO Motorizaciones VALUES ("4", "53", "1988 - 1991");
+INSERT INTO Motorizaciones VALUES ("4", "55", "1988 - 1991");
+INSERT INTO Motorizaciones VALUES ("4", "165", "1989 - 1991");
+INSERT INTO Motorizaciones VALUES ("4", "6", "1988 - 1991");
 
 -- Motorizaciones quinta generación de Civic
 
-INSERT INTO Motorizaciones VALUES ("5", "28", "1992-1995");
-INSERT INTO Motorizaciones VALUES ("5", "51", "1990");
-INSERT INTO Motorizaciones VALUES ("5", "43", "1992-1995");
-INSERT INTO Motorizaciones VALUES ("5", "44", "1992-1995");
-INSERT INTO Motorizaciones VALUES ("5", "45", "1992-1995");
-INSERT INTO Motorizaciones VALUES ("5", "47", "1992-1995");
-INSERT INTO Motorizaciones VALUES ("5", "48", "1992-1995");
-INSERT INTO Motorizaciones VALUES ("5", "50", "1992-1995");
-INSERT INTO Motorizaciones VALUES ("5", "51", "1992-1995");
-INSERT INTO Motorizaciones VALUES ("5", "56", "1992-1995");
-INSERT INTO Motorizaciones VALUES ("5", "64", "1992-1995");
-INSERT INTO Motorizaciones VALUES ("5", "65", "1994-1995");
-INSERT INTO Motorizaciones VALUES ("5", "7", "1991-1994");
-INSERT INTO Motorizaciones VALUES ("5", "9", "1989-1991");
-INSERT INTO Motorizaciones VALUES ("5", "10", "1992-1995");
+INSERT INTO Motorizaciones VALUES ("5", "28", "1992 - 1995");
+INSERT INTO Motorizaciones VALUES ("5", "51", "1992");
+INSERT INTO Motorizaciones VALUES ("5", "43", "1992 - 1995");
+INSERT INTO Motorizaciones VALUES ("5", "44", "1992 - 1995");
+INSERT INTO Motorizaciones VALUES ("5", "45", "1992 - 1995");
+INSERT INTO Motorizaciones VALUES ("5", "47", "1992 - 1995");
+INSERT INTO Motorizaciones VALUES ("5", "48", "1992 - 1995");
+INSERT INTO Motorizaciones VALUES ("5", "50", "1992 - 1995");
+INSERT INTO Motorizaciones VALUES ("5", "51", "1992 - 1995");
+INSERT INTO Motorizaciones VALUES ("5", "56", "1992 - 1995");
+INSERT INTO Motorizaciones VALUES ("5", "64", "1992 - 1995");
+INSERT INTO Motorizaciones VALUES ("5", "65", "1994 - 1995");
+INSERT INTO Motorizaciones VALUES ("5", "7", "1991 - 1994");
+INSERT INTO Motorizaciones VALUES ("5", "9", "1992");
+INSERT INTO Motorizaciones VALUES ("5", "10", "1992 - 1995");
 INSERT INTO Motorizaciones VALUES ("5", "11", "1995");
 
 -- Motorizaciones sexta generación de Civic
 
+INSERT INTO Motorizaciones VALUES ("6", "29", "1995 - 2000");
+INSERT INTO Motorizaciones VALUES ("6", "31", "1996 - 2000");
+INSERT INTO Motorizaciones VALUES ("6", "32", "1995 - 2000");
+INSERT INTO Motorizaciones VALUES ("6", "33", "1996 - 1998");
+INSERT INTO Motorizaciones VALUES ("6", "34", "1997 - 2000");
+INSERT INTO Motorizaciones VALUES ("6", "52", "1997 - 2000");
+INSERT INTO Motorizaciones VALUES ("6", "53", "1996 - 2000");
+INSERT INTO Motorizaciones VALUES ("6", "60", "1996 - 2000");
+INSERT INTO Motorizaciones VALUES ("6", "61", "1996 - 2000");
+INSERT INTO Motorizaciones VALUES ("6", "62", "1996 - 2000");
+INSERT INTO Motorizaciones VALUES ("6", "63", "1996 - 2000");
+INSERT INTO Motorizaciones VALUES ("6", "10", "1996 - 2000");
+INSERT INTO Motorizaciones VALUES ("6", "12", "1996 - 2000");
+
+-- Motorizaciones séptima generación de Civic
+
+INSERT INTO Motorizaciones VALUES ("7", "35", "2001 - 2005");
+INSERT INTO Motorizaciones VALUES ("7", "49", "2001 - 2006");
+INSERT INTO Motorizaciones VALUES ("7", "57", "2001 - 2005");
+INSERT INTO Motorizaciones VALUES ("7", "58", "2005 - 2007");
+INSERT INTO Motorizaciones VALUES ("7", "59", "2001 - 2005");
+INSERT INTO Motorizaciones VALUES ("7", "123", "2001 - 2005");
+INSERT INTO Motorizaciones VALUES ("7", "124", "2002 - 2005");
+INSERT INTO Motorizaciones VALUES ("7", "167", "2001 - 2005");
+
+-- Motorizaciones octava generación de Civic
+
+INSERT INTO Motorizaciones VALUES ("8", "141", "2006 - 2012");
+INSERT INTO Motorizaciones VALUES ("8", "156", "2006 - 2012");
+INSERT INTO Motorizaciones VALUES ("8", "158", "2006 - 2011");
+INSERT INTO Motorizaciones VALUES ("8", "130", "2006 - 2010");
+INSERT INTO Motorizaciones VALUES ("8", "131", "2006 - 2011");
+INSERT INTO Motorizaciones VALUES ("8", "132", "2007 - 2010");
+INSERT INTO Motorizaciones VALUES ("8", "120", "2007 - 2011");
+INSERT INTO Motorizaciones VALUES ("8", "122", "2006 - 2010");
+INSERT INTO Motorizaciones VALUES ("8", "152", "2006 - 2011");
+
+-- Motorizaciones novena generación de Civic
+
+INSERT INTO Motorizaciones VALUES ("9", "155", "2012 - 2015");
+INSERT INTO Motorizaciones VALUES ("9", "159", "2012 - 2015");
+INSERT INTO Motorizaciones VALUES ("9", "160", "2012 - 2015");
+INSERT INTO Motorizaciones VALUES ("9", "162", "2012 - 2015");
+INSERT INTO Motorizaciones VALUES ("9", "163", "2012 - 2015");
+INSERT INTO Motorizaciones VALUES ("9", "140", "2012 - 2015");
+INSERT INTO Motorizaciones VALUES ("9", "148", "2012 - 2015");
+INSERT INTO Motorizaciones VALUES ("9", "151", "2012 - 2015");
+INSERT INTO Motorizaciones VALUES ("9", "153", "2012 - 2015");
+
+-- Motorizaciones décima generación de Civic
+
+INSERT INTO Motorizaciones VALUES ("10", "155", "2016 - 2021");
+INSERT INTO Motorizaciones VALUES ("10", "159", "2016 - 2021");
+INSERT INTO Motorizaciones VALUES ("10", "160", "2016");
+INSERT INTO Motorizaciones VALUES ("10", "162", "2016 - 2020");
+INSERT INTO Motorizaciones VALUES ("10", "163", "2016 - 2020");
+INSERT INTO Motorizaciones VALUES ("10", "140", "2016 - 2021");
+INSERT INTO Motorizaciones VALUES ("10", "148", "2016 - 2021");
+INSERT INTO Motorizaciones VALUES ("10", "148", "2016 - 2021");
+
+-- Motorizaciones undécima generación de Civic
+
+INSERT INTO Motorizaciones VALUES ("11", "142", "2022 - Presente");
+INSERT INTO Motorizaciones VALUES ("11", "144", "2022 - Presente");
+INSERT INTO Motorizaciones VALUES ("11", "145", "2022 - Presente");
+INSERT INTO Motorizaciones VALUES ("11", "146", "2022 - Presente");
+INSERT INTO Motorizaciones VALUES ("11", "147", "2022 - Presente");
+INSERT INTO Motorizaciones VALUES ("11", "127", "2023 - Presente");
+INSERT INTO Motorizaciones VALUES ("11", "128", "2022 - Presente");
+INSERT INTO Motorizaciones VALUES ("11", "165", "2023 - Presente");
+
+-- Motorizaciones primera generación CRX
+
+INSERT INTO Motorizaciones VALUES ("23", "80", "1983 - 1986");
+INSERT INTO Motorizaciones VALUES ("23", "36", "1984 - 1987");
+INSERT INTO Motorizaciones VALUES ("23", "37", "1984 - 1987");
+INSERT INTO Motorizaciones VALUES ("23", "38", "1984 - 1987");
+INSERT INTO Motorizaciones VALUES ("23", "39", "1985 - 1987");
+INSERT INTO Motorizaciones VALUES ("23", "40", "1985 - 1987");
+
+-- Motorizaciones segunda generación CRX
+
+INSERT INTO Motorizaciones VALUES ("24", "30", "1990");
+INSERT INTO Motorizaciones VALUES ("24", "43", "1988 – 1991");
+INSERT INTO Motorizaciones VALUES ("24", "46", "1988 – 1991");
+INSERT INTO Motorizaciones VALUES ("24", "54", "1988 – 1991");
+INSERT INTO Motorizaciones VALUES ("24", "55", "1988 – 1991");
+INSERT INTO Motorizaciones VALUES ("24", "56", "1988 – 1991");
+INSERT INTO Motorizaciones VALUES ("24", "66", "1988 – 1991");
+INSERT INTO Motorizaciones VALUES ("24", "9", "1989 - 1991");
+
+-- Motorizaciones tercera generación CRX
+
+INSERT INTO Motorizaciones VALUES ("25", "47", "1996 – 1997");
+INSERT INTO Motorizaciones VALUES ("25", "62", "1996 – 1997");
+INSERT INTO Motorizaciones VALUES ("25", "63", "1996 – 1997");
+INSERT INTO Motorizaciones VALUES ("25", "64", "1993 – 1996");
+INSERT INTO Motorizaciones VALUES ("25", "8", "1992 – 1995");
+INSERT INTO Motorizaciones VALUES ("25", "10", "1992 - 1997");
+INSERT INTO Motorizaciones VALUES ("25", "11", "1994 - 1995");
+
+-- Motorizaciones primera generación Prelude
+
+INSERT INTO Motorizaciones VALUES ("26", "72", "1979 - 1982");
+INSERT INTO Motorizaciones VALUES ("26", "73", "1979 - 1982");
+
+-- Motorizaciones segunda generación Prelude
+
+INSERT INTO Motorizaciones VALUES ("27", "76", "1983 - 1984");
+INSERT INTO Motorizaciones VALUES ("27", "79", "1984 - 1987");
+INSERT INTO Motorizaciones VALUES ("27", "5", "1984 - 1987");
+
+-- Motorizaciones tercera generación Prelude
+
+INSERT INTO Motorizaciones VALUES ("28", "14", "1988 - 1991");
+INSERT INTO Motorizaciones VALUES ("28", "15", "1988 – 1990");
+INSERT INTO Motorizaciones VALUES ("28", "16", "1988 - 1991");
+INSERT INTO Motorizaciones VALUES ("28", "17", "1988 – 1991");
+INSERT INTO Motorizaciones VALUES ("28", "18", "1988 – 1991");
+INSERT INTO Motorizaciones VALUES ("28", "19", "1988 – 1991");
+INSERT INTO Motorizaciones VALUES ("28", "20", "1990 – 1991");
+INSERT INTO Motorizaciones VALUES ("28", "21", "1990 – 1991");
+INSERT INTO Motorizaciones VALUES ("28", "22", "1990 – 1991");
+
+-- Motorizaciones cuarta generación Prelude
+
+INSERT INTO Motorizaciones VALUES ("29", "85", "1992 - 1996");
+INSERT INTO Motorizaciones VALUES ("29", "91", "1992 - 1996");
+INSERT INTO Motorizaciones VALUES ("29", "98", "1993 - 1996");
+INSERT INTO Motorizaciones VALUES ("29", "105", "1992 - 1996");
+INSERT INTO Motorizaciones VALUES ("29", "106", "1992 - 1996");
+INSERT INTO Motorizaciones VALUES ("29", "107", "1992 - 1996");
+INSERT INTO Motorizaciones VALUES ("29", "112", "1992 - 1996");
+INSERT INTO Motorizaciones VALUES ("29", "113", "1992 - 1996");
+
+-- Motorizaciones quinta generación Prelude
+
+INSERT INTO Motorizaciones VALUES ("30", "85", "1997 - 2001");
+INSERT INTO Motorizaciones VALUES ("30", "98", "1997");
+INSERT INTO Motorizaciones VALUES ("30", "101", "1997 - 2001");
+INSERT INTO Motorizaciones VALUES ("30", "105", "1997 - 2001");
+INSERT INTO Motorizaciones VALUES ("30", "108", "1997 - 1998");
+INSERT INTO Motorizaciones VALUES ("30", "109", "1997 - 1998");
+INSERT INTO Motorizaciones VALUES ("30", "110", "1999 - 2001");
+INSERT INTO Motorizaciones VALUES ("30", "111", "1999 - 2001");
+
+-- Motorizaciones S2K
+
+INSERT INTO Motorizaciones VALUES ("31", "89", "1999 - 2009");
+INSERT INTO Motorizaciones VALUES ("31", "99", "2004 – 2009");
+
+-- Motorizaciones primera generación de NSX
+
+INSERT INTO Motorizaciones VALUES ("32", "24", "1991 - 2001");
+INSERT INTO Motorizaciones VALUES ("32", "25", "1991 - 2005 (USA), 1997 - 2005 (NSX-R)");
+
+-- Motorizaciones segunda generación de NSX
+
+INSERT INTO Motorizaciones VALUES ("33", "119", "2016 - 2022");
