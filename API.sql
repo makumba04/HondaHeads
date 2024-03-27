@@ -1,6 +1,9 @@
-CREATE DATABASE hondaAPI DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+-- Crea la base de datos para la API, establece el CHARSET que utiliza y el formato de cotejamiento de las entradas
+CREATE DATABASE IF NOT EXISTS hondaAPI DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 
-CREATE TABLE Motores (
+-- Crea las tablas que conforman la base de datos
+
+CREATE TABLE IF NOT EXISTS Motores ( -- Tabla de Motores: Contiene todos los datos relacionados con un motor concreto
     ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     CodigoMotor VARCHAR(15) NOT NULL,
     Combustible VARCHAR(15),
@@ -12,7 +15,7 @@ CREATE TABLE Motores (
     ParMaximo VARCHAR(255)
 );
 
-CREATE TABLE Modelos (
+CREATE TABLE IF NOT EXISTS Modelos ( -- Tabla de Modelos: Contiene los datos generales como medida y peso de cada modelo (con cada modelo se refiere a cada una de las generaciones de cada modelo)
     ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     NombreModelo VARCHAR(50) NOT NULL,
     LongitudChasis VARCHAR(150),
@@ -21,7 +24,7 @@ CREATE TABLE Modelos (
     datosExtra VARCHAR(255)
 );
 
-CREATE TABLE Motorizaciones (
+CREATE TABLE IF NOT EXISTS Motorizaciones ( -- Tabla de Motorizaciones: Contiene los datos principales sobre la relacion N:M entre motores y modelos, llamada motorizaciones
     ModeloID INT NOT NULL,
     CodigoMotorID INT NOT NULL,
     PeriodoUso VARCHAR(50)
