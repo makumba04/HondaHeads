@@ -1,35 +1,58 @@
 const express = require('express');
 const mysql = require('mysql2');
-const api = express();
 
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: null, // Solo para trabajo en local, en caso contrario sustituir por la contraseña del user
-    database: 'hondaAPI'
+const api = express();
+const PORT = process.env.PORT || 3000;
+
+api.use(express.json());
+
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'hondaAPI',
 });
 
-try {
-    connection.connect(function(){
-
-        $query = "SELECT * FROM Modelos";
-
-        connection.query($query, function(err, rows, fields){
-            if(err){
-                console.log('La consulta no ha salio churra, algo has puesto mal');
-                console.log(err);
-                return
-            } else {
-                console.log('Todo correcto pichita', rows);
-            }
-        });
-    });
-} catch (e) {
-    console.log('Algo a fallado en la conexión notas. Espabila');
-    console.log(e);
-}
+db.connect((err) => {
+  if (err) {
+    console.error('Error connecting to MySQL:', err);
+    return;
+  }
+  console.log('Connected to MySQL database');
+});
 
 api.use(express.static(__dirname + '/public'))
-api.listen(3000, () => {
-    console.log('API is up and running on port 3000!');
+
+api.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+api.get('/modelos', (req, res) => {
+  db.query('SELECT * FROM modelos', (err, results) => {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
+api.get('/motores', (req, res) => {
+  db.query('SELECT * FROM motores', (err, results) => {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
+api.get('/motorizaciones', (req, res) => {
+  db.query('SELECT * FROM motorizaciones', (err, results) => {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
+// Get a user by ID
+/* app.get('/users/:id', (req, res) => {
+  const { id } = req.params;
+  db.query('SELECT * FROM users WHERE id = ?', [id], (err, results) => {
+    if (err) throw err;
+    res.json(results[0]);
+  });
+}); */
