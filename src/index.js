@@ -34,10 +34,18 @@ api.get('/modelos', (req, res) => {
   });
 });
 
-api.get('/motores', (req, res) => {
+api.get('/TodosMotores', (req, res) => {
   db.query('SELECT * FROM motores', (err, results) => {
     if (err) throw err;
     res.json(results);
+  });
+});
+
+api.get('/MotorPorCodigo/:CodigoMotor', (req, res) => {
+  const { CodigoMotor } = req.params;
+  db.query('SELECT * FROM motores WHERE CodigoMotor = ?', [CodigoMotor], (err, results) => {
+    if (err) throw err;
+    res.json(results[0]);
   });
 });
 
@@ -48,11 +56,3 @@ api.get('/motorizaciones', (req, res) => {
   });
 });
 
-// Get a user by ID
-/* app.get('/users/:id', (req, res) => {
-  const { id } = req.params;
-  db.query('SELECT * FROM users WHERE id = ?', [id], (err, results) => {
-    if (err) throw err;
-    res.json(results[0]);
-  });
-}); */

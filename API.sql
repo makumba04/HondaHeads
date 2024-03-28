@@ -6,7 +6,7 @@ CREATE DATABASE IF NOT EXISTS hondaAPI DEFAULT CHARACTER SET utf8 DEFAULT COLLAT
 CREATE TABLE IF NOT EXISTS Motores ( -- Tabla de Motores: Contiene todos los datos relacionados con un motor concreto
     ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     CodigoMotor VARCHAR(50) NOT NULL,
-    Combustible VARCHAR(15),
+    Combustible VARCHAR(50),
     TipoMotor VARCHAR(255),
     Cilindrada INT,
     RelacionCompresion VARCHAR(40),
@@ -268,9 +268,9 @@ INSERT INTO Motores VALUES (DEFAULT, "L15BG", "Gasolina", "I4, DOHC, 16v, VTEC +
 INSERT INTO Motores VALUES (DEFAULT, "L15BJ", "Gasolina", "I4, DOHC, 16v, VTEC + turboalimentado, Inyección multipunto", 1497, "10.3:1", "73 mm x 89.4 mm (2.87 in x 3.52 in)", "127CV (95 kW) @ 6000 rpm", "130 lb/ft (180 Nm) @ 4500 rpm");
 INSERT INTO Motores VALUES (DEFAULT, "L15C", "Gasolina", "I4, DOHC, 16v, VTEC + turboalimentado, Inyección multipunto", 1497, "10.3:1", "73 mm x 89.4 mm (2.87 in x 3.52 in)", "182CV (134 kW) @ 6000 rpm", "190 lb/ft (260 Nm) @ 5000 rpm");
 INSERT INTO Motores VALUES (DEFAULT, "L15CA", "Gasolina", "I4, DOHC, 16v, VTEC + turboalimentado, Inyección multipunto", 1497, "10.3:1", "73 mm x 89.4 mm (2.87 in x 3.52 in)", "200CV (150 kW) @ 6000 rpm", "190 lb/ft (260 Nm) @ 5000 rpm");
-INSERT INTO Motores VALUES (DEFAULT, "LEA2", "Híbrido / Gasolina", "I4, SOHC, 16v, Híbrido (IMA - Integrated Motor Assist), PGM-FI, Inyección multipunto", 1497, "10.8:1", "73 mm x 89.4 mm (2.87 in x 3.52 in)", "Motor Gasolina: 110CV (82 kW) @ 5500 rpm, Motor Eléctrico: 23CV (17 kW) @ 3000 rpm", "Motor Gasolina: 127 lb/ft (172 Nm) @ 3500 rpm, Motor Eléctrico: 78 lb/ft (106 Nm) @ 1550 rpm");
-INSERT INTO Motores VALUES (DEFAULT, "LFA", "Híbrido / Gasolina", "I4, DOHC, 16v, Híbrido, iMMD, PGM-FI, Inyección multipunto", 1993, "10.5:1", "81 mm x 96.7 mm (3.19 in x 3.81 in)", "Motor Gasolina: 145CV (107 kW) @ 6200 rpm, Motor eléctrico: 184CV (135 kW) @ 6000 rpm, Potencia (Combinada): 215CV (158 kW) @ 6200 rpm", "Motor Gasolina: 129 lb/ft (175 Nm) @ 3500 rpm, Motor eléctrico: 232 lb/ft (315 Nm) @ 2000 rpm");
-INSERT INTO Motores VALUES (DEFAULT, "LFC5", "Híbrido / Gasolina", "I4, DOHC, 16v, Híbrido, iMMD, PGM-FI, Inyección directa multipunto", 1993, "13.9:1", "81 mm x 96.7 mm (3.19 in x 3.81 in)", "205CV (152 kW) @ 6100 rpm", "134 lb/ft (182 Nm) @ 4500 rpm");
+INSERT INTO Motores VALUES (DEFAULT, "LEA2", "Hibrido / Gasolina", "I4, SOHC, 16v, Híbrido (IMA - Integrated Motor Assist), PGM-FI, Inyección multipunto", 1497, "10.8:1", "73 mm x 89.4 mm (2.87 in x 3.52 in)", "Motor Gasolina: 110CV (82 kW) @ 5500 rpm, Motor Eléctrico: 23CV (17 kW) @ 3000 rpm", "Motor Gasolina: 127 lb/ft (172 Nm) @ 3500 rpm, Motor Eléctrico: 78 lb/ft (106 Nm) @ 1550 rpm");
+INSERT INTO Motores VALUES (DEFAULT, "LFA", "Hibrido / Gasolina", "I4, DOHC, 16v, Híbrido, iMMD, PGM-FI, Inyección multipunto", 1993, "10.5:1", "81 mm x 96.7 mm (3.19 in x 3.81 in)", "Motor Gasolina: 145CV (107 kW) @ 6200 rpm, Motor eléctrico: 184CV (135 kW) @ 6000 rpm, Potencia (Combinada): 215CV (158 kW) @ 6200 rpm", "Motor Gasolina: 129 lb/ft (175 Nm) @ 3500 rpm, Motor eléctrico: 232 lb/ft (315 Nm) @ 2000 rpm");
+INSERT INTO Motores VALUES (DEFAULT, "LFC5", "Hibrido / Gasolina", "I4, DOHC, 16v, Híbrido, iMMD, PGM-FI, Inyección directa multipunto", 1993, "13.9:1", "81 mm x 96.7 mm (3.19 in x 3.81 in)", "205CV (152 kW) @ 6100 rpm", "134 lb/ft (182 Nm) @ 4500 rpm");
 
 -- SERIE N
 
@@ -294,7 +294,7 @@ INSERT INTO Motores VALUES (DEFAULT, "R20A3", "Gasolina", "I4, SOHC, 16v, PGM-FI
 INSERT INTO Motores VALUES (DEFAULT, "R20A5", "Gasolina", "I4, SOHC, 16v, VTEC, PGM-FI, Inyección multipunto", 1997, "10.6:1", "81 mm x 96.9 mm (3.19 in x 3.81 in)", "155CV (114KW) @ 6500 rpm", "140 lb/ft (190 Nm) @ 4300 rpm");
 INSERT INTO Motores VALUES (DEFAULT, "R20Z1", "Gasolina", "I4, SOHC, 16v, PGM-FI, Inyección multipunto", 1997, "10.6:1", "81 mm x 96.9 mm (3.19 in x 3.81 in)", "155CV (114KW) @ 6500 rpm", "140 lb/ft (190 Nm) @ 4300 rpm");
 INSERT INTO Motores VALUES (DEFAULT, "R20Z2", "Gasolina", "I4, SOHC, 16v, iVTEC, PGM-FI, Inyección multipunto", 1997, "10.6:1", "81 mm x 96.9 mm (3.19 in x 3.81 in)", "153CV (114 kW) @ 6500 rpm", "140 lb/ft (190 Nm) @ 4300 rpm");
-INSERT INTO Motores VALUES (DEFAULT, "LFC", "Híbrido / Gasolina", "I4, DOHC, 16v, Híbrido, PGM-FI, Inyección multipunto", 1993, "13.9:1", "81 mm x 96.7 mm (3.19 in x 3.81 in)", "Motor Gasolina: 141CV (104 kW) @ 6000 rpm, Motor Eléctrico: 184CV (135 kW) @ 6000 rpm", "Motor Gasolina: 134 lb/ft (182 Nm) @ 4500 rpm, Motor Eléctrico: 232 lb/ft (315 Nm) @ 2000 rpm");
+INSERT INTO Motores VALUES (DEFAULT, "LFC", "Hibrido / Gasolina", "I4, DOHC, 16v, Híbrido, PGM-FI, Inyección multipunto", 1993, "13.9:1", "81 mm x 96.7 mm (3.19 in x 3.81 in)", "Motor Gasolina: 141CV (104 kW) @ 6000 rpm, Motor Eléctrico: 184CV (135 kW) @ 6000 rpm", "Motor Gasolina: 134 lb/ft (182 Nm) @ 4500 rpm, Motor Eléctrico: 232 lb/ft (315 Nm) @ 2000 rpm");
 
 -- SERIE ZC
 
