@@ -5,7 +5,9 @@
         src: url(../font/Honda\ Font.ttf);
     }
 
-    body{ 
+    body{
+        display: flex;
+        flex-direction: column;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         background: rgba(0,67,125,1);
         background: -moz-linear-gradient(left, rgba(0,67,125,1) 0%, rgba(0,41,74,1) 0%, rgba(0,85,164,1) 50%, rgba(0,41,74,1) 100%);
@@ -21,7 +23,9 @@
 /* - MAIN SYNTAX - */
 
     header{
+        width: 100%;
         display: flex;
+        position: fixed;
         flex-direction: row;
         padding-top: 2%;
         padding-bottom: 2%;
@@ -29,13 +33,33 @@
         background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(100,25,25,1) 35%, rgba(200,45,45,1) 100%);
         align-items: center;
         justify-content: space-between;
+        z-index: 1;
     }
+
+    nav{
+        top: 10%;
+        width: 100%;
+        position: fixed;
+        display: flex;
+        flex-direction: row;
+        padding: 0.5%;
+        color: black;
+        background-color: whitesmoke;
+        z-index: 1;
+    }
+    
+    nav a button{
+        width: 10rem;
+        margin-right: 2%;
+    }
+
     .main_wrapper{
         width: 85%;
         margin: auto;
-        padding-top: 2%;
+        padding-top: 9%;
         padding-bottom: 2%;
     }
+
     main{
         padding: 2%;
         background-color: white;
@@ -45,14 +69,38 @@
         -moz-box-shadow: 0px 0px 10px 2px rgba(97,97,97,1);
         box-shadow: 0px 0px 10px 2px rgba(97,97,97,1);
     }
+
     article{
         margin-top: 1%;
         margin-bottom: 3%;
     }
+
+    article img{
+        width: 35%;
+        float: right;
+        margin: 1%;
+    }
+
     section{
         margin-top: 3%;
         margin-bottom: 3%;
     }
+    
+    .video{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    a{
+        text-decoration: none;
+    }
+
+    p{
+        margin: 1%;
+        text-align: justify;
+    }
+
     footer{
         display: flex;
         flex-direction: row;
@@ -62,197 +110,328 @@
         background: rgb(0,0,0);
         background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(100,25,25,1) 35%, rgba(200,45,45,1) 100%);
     }
+    
+    footer p{
+        color: white;
+        margin-right: 1%;
+    }
 
 /* - MAIN SYNTAX - */
 
-h1{
-    color: white;
-    font-family: HondaFont;
-    margin-left: 10%;
-}
-h2{
-    margin-bottom: 1%;
-    padding-bottom: 1%;
-    display: flex;
-    align-items: center;
-    font-family: HondaFont;
-    border-bottom: 1px dashed grey;
-}
-h3{
-    font-size: 1em; 
-    color: white;
-    font-family: HondaFont;
-    margin-left: -15%;
-}
-.h2_logo{
-    width: 3%;
-    margin-right: 1%;
-}
-.social_wrapper1{
-    width: 20%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-    margin-left: 1%;
-}
-.social_wrapper2{
-    width: 20%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-    margin-top: 2%;
-}
-.social_image{
-    width: 90px;
-    opacity: 0.85;
-}
-.social_image:hover{
-    opacity: 1;
-}
-#honda_logo_white{
-    width: 130px;
-}
-a{
-    text-decoration: none;
-}
-footer p{
-    color: white;
-    margin-right: 1%;
-}
-.card_img_top{
-    width: 100%;
-}
+/* - HEADERS (Títulos) - */
 
+    h1{
+        color: white;
+        font-family: HondaFont;
+        margin-left: 10%;
+    }
+    h2{
+        margin-bottom: 1%;
+        padding-bottom: 1%;
+        display: flex;
+        align-items: center;
+        font-family: HondaFont;
+        border-bottom: 1px dashed grey;
+    }
 
-.gallery {
-    background: white;
-}
-  
-.card {      
-    display: flex;
-    flex-direction: column;
-    width: 66%;
-    height: 450px;
-    margin-right: 10%;
-    margin-bottom: 2%;
-    border: 1px solid black;
-    counter-increment: card;
-}
+    .introduccion_h2{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-bottom: 1px dashed grey;
+        padding: 0.5%;
+        margin-bottom: 2%;
+    }
+    
+    .introduccion_h2_txt{
+        width: 97%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
 
-.card_img{
-    display: flex;
-    flex-direction: column;
-    height: 65%;
-    align-items: center;
-    justify-content: center;
-}
-.card_img_top{
-    width: 90%;
-}
-.card_body{
-    display: flex;
-    flex-direction: column;
-    height: 35%;
-    align-items: center;
-    justify-content: space-evenly;
-}
+    .introduccion_h2_txt h2{
+        border: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
 
-.link_foro{
-    width: 10em;
-    margin-left: -20%;
-    padding: 5%;
-}
+    h3{
+        font-size: 1.2em;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        margin-top: 1.5%;
+        margin-bottom: 1%;
+    }
 
-/* cell number */
-.card:before {
-    display: block;
-    text-align: center;
-    line-height: 200px;
-    font-size: 80px;
-    color: white;
-}
+/* - HEADERS (Títulos) - */
 
-button{
-    border: none;
-    background-color: rgba(0,67,125,1);
-    color: white;
-    width: 5em;
-}
+/* - LISTA DATOS MODELO - */
 
-button:hover{
-    background-color: rgb(0, 59, 110);
-    color: rgb(210, 210, 210);
-}
+    ul{
+        margin-left: 1.5em;
+    }
+    
+/* - LISTA DATOS MODELO - */
 
-#buscar_motor{
-    display: flex;
-    align-items: center;
-}
+/* - REDES SOCIALES - */
+    
+    .social_wrapper1{
+        width: 20%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        margin-left: 1%;
+    }
+    .social_wrapper2{
+        width: 20%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        margin-top: 2%;
+    }
+    .social_image{
+        width: 90px;
+        opacity: 0.85;
+    }
+    .social_image:hover{
+        opacity: 1;
+    }
 
-#buscar_motor input{
-    width: 15%;
-}
+/* - REDES SOCIALES - */
 
-#buscar_btn{
-    background-color: rgba(0, 0, 0, 0);
-}
+/* - SCROLLBAR MODIFICADA - */
 
-#buscar_btn img{
-    width: 45%;
-    opacity: 0.75;
-}
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    /* Track */
+    ::-webkit-scrollbar-track {
+        align-items: center;
+        background: white;
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+        width: 10px;
+        border-radius: 10px;
+    }
+    
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
 
-#buscar_btn img:hover{
-    opacity: 1;
-}
+/* - SCROLLBAR MODIFICADA - */
 
-#tabla_motor{
-    display: flex;
-    justify-content: center;
-    max-height: 400px;
-    overflow-y: scroll;
-    margin-top: 2%;
-}
+/* - CARDS - */
 
-::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #888;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
+    .gallery{
+        width: 65%;
+        height: 65%;
+        margin: 0 auto;
+    }
 
-#motores th, td{
-    text-align: center;
-    padding: 0.5%;
-    border: 1px solid black; 
-    min-width: 120px;
-    width: 250px;
-    height: 100%;
-    background-color: #c2c2c2;
-}
+    .card {      
+        display: flex;
+        flex-direction: column;
+        width: 66%;
+        height: 450px;
+        margin-right: 10%;
+        margin-bottom: 2%;
+        border: 1px solid black;
+        counter-increment: card;
+    }
 
-.gasolina{
-    background-color: coral;
-}
+    .card_gen {      
+        display: flex;
+        flex-direction: column;
+        width: 66%;
+        height: auto;
+        margin-right: 10%;
+        margin-bottom: 2%;
+        border: 1px solid black;
+        counter-increment: card;
+    }
+    
+    .card:before {
+        display: block;
+        text-align: center;
+        line-height: 200px;
+        font-size: 80px;
+        color: white;
+    }
+    
+    .card_img {
+        display: flex;
+        flex-direction: column;
+        height: 65%;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .card_img_gen {
+        height: 65%;
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .card_img_top {
+        width: 90%;
+    }
 
-.hibrido{
-    background-color: rgb(255, 186, 160);
-}
+    .card_img_top_gen {
+        width: 90%;
+        height: auto;
+        margin-top: 4%;
+    }
+    
+    .card_body {
+        display: flex;
+        flex-direction: column;
+        height: 35%;
+        align-items: center;
+        justify-content: space-evenly;
+    }
 
-.diesel{
-    background-color: darkcyan;
-}
+    .card_body_gen {
+        margin-top: 2%;
+        margin-bottom: 2%;
+        display: flex;
+        flex-direction: column;
+        height: 35%;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+/* - CARDS - */
+
+/* - BUSCADOR DE MOTORES - */
+
+    #buscar_motor{
+        display: flex;
+        align-items: center;
+    }
+
+    #buscar_motor input{
+        width: 15%;
+    }
+
+    #buscar_btn{
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    #buscar_btn img{
+        width: 45%;
+        opacity: 0.75;
+    }
+
+    #buscar_btn img:hover{
+        opacity: 1;
+    }
+
+    select{
+        background-color: rgba(0,67,125,1);
+        color: white;
+        border: none;
+    }
+
+    select:hover{
+        cursor: pointer;
+    }
+
+    option{
+        border: none;
+    }
+
+/* - BUSCADOR DE MOTORES - */
+
+/* - TABLAS - */
+
+    /* - TABLA DE MOTORES - */
+
+        #tabla_motor{
+            display: flex;
+            justify-content: center;
+            max-height: 400px;
+            overflow-y: scroll;
+            margin-top: 2%;
+        }
+
+        #motores th, td{
+            text-align: center;
+            padding: 0.5%;
+            border: 1px solid black; 
+            min-width: 120px;
+            width: 250px;
+            height: 100%;
+            background-color: #c2c2c2;
+        }
+
+        .gasolina{
+            background-color: coral;
+        }
+
+        .hibrido{
+            background-color: rgb(255, 186, 160);
+        }
+
+        .diesel{
+            background-color: darkcyan;
+        }
+
+    /* - TABLA DE MOTORES - */
+
+    /* - TABLA DE MOTORIZACIONES - */
+
+        #tabla_motorizaciones{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+    /* - TABLA DE MOTORIZACIONES - */
+
+/* - TABLAS - */
+
+/* - BOTONES - */
+
+    .link_foro{
+        width: 10em;
+        margin-left: -20%;
+        padding: 5%;
+    }
+
+    button{
+        border: none;
+        background-color: rgba(0,67,125,1);
+        color: white;
+        width: 5em;
+    }
+
+    button:hover{
+        background-color: rgb(0, 59, 110);
+        color: rgb(210, 210, 210);
+        cursor: pointer;
+    }
+
+/* - BOTONES - */
+
+/* - IMAGES - */
+
+    .h2_logo{
+        width: 3%;
+        margin-right: 1%;
+    }
+    #honda_logo_white{
+        width: 130px;
+    }
+
+/* - IMAGES - */
