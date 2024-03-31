@@ -28,7 +28,7 @@ api.listen(PORT, () => {
 });
 
 api.get('/TodosMotores', (req, res) => {
-  db.query('SELECT * FROM motores ORDER BY ?', (err, results) => {
+  db.query('SELECT * FROM motores', (err, results) => {
     if (err) throw err;
     res.json(results);
   });
