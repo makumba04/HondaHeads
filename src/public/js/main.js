@@ -1,6 +1,7 @@
 function buscarMotores() { // Función buscarMotores: Busca los motores en la base de datos
 
     var CodigoMotor = document.getElementById('CodigoMotor').value.toUpperCase(); // Guarda el valor del input donde se pone el codigo de motor
+    // var filtro = document.getElementById('filtro').value; EL FILTRO AUN NO FUNCIONA
 
     // Primero pasa por este bloque if - else que compara las siguientes condicionales
 
@@ -55,28 +56,31 @@ function mostrarTodosMotores(motores){ // Función mostrarTodosMotores: Recibe l
 
     var tablaMotor = document.getElementById('tabla_motor'); // Primero crea un handler para el contenedor de la tabla
 
-    if(motores.length > 0){ // Como los datos JSON (cuando son varios) llegan en forma de array, primero verifica que al menos haya más de uno
+    if(motores){ // Primero verifica si se ha encontrado un motor
+
+        if(motores.length > 0){ // Como los datos JSON (cuando son varios) llegan en forma de array, primero verifica que al menos haya más de uno
         
-        // Luego crea un nuevo elemento llamado tabla y le inserta el código por escrito para generar dicha tabla
-        var tabla = "<table id='motores'><thead><tr><th>Combustible</th><th>Código de Motor</th><th>Tipo de motor</th><th>Relación de compresión</th><th>Diametro y carrera</th><th>Potencia máxima</th><th>Par máximo</th></tr></thead><tbody>";
-
-        motores.forEach(motor => { // Luego usando el método de String "forEach()" itera sobre cada uno de los subarrays dentro del array de motores que recibe en JSON
-
-            // Luego pasa por este bloque if - else para comparar lo siguiente
-            if (motor.combustible == "Hibrido / Gasolina") { // Si el combustible del motor es híbrido de gasolina
-                var combustibleClass = motor.Combustible.slice(0, 7).toLowerCase(); // Convierte el input de texto en minúsculas y se queda solo con la palabra hibrido para el CSS
-            } else { // Si el combustible es cualquiera de los otros dos tipos
-                var combustibleClass = motor.Combustible.toLowerCase(); // Simplemente lo pasa a minúsculas
-            }
-
-            // Luego genera una tabla con todos los datos necesarios para crear dicha fila de datos sobre el motor en esa iteración
-            tabla += `<tr><td class='${combustibleClass}'>${motor.Combustible}</td><td class='${combustibleClass}'>${motor.CodigoMotor}</td><td class='${combustibleClass}'>${motor.TipoMotor}</td><td class='${combustibleClass}'>${motor.RelacionCompresion}</td><td class='${combustibleClass}'>${motor.DiametroCarrera}</td><td class='${combustibleClass}'>${motor.PotenciaMaxima}</td><td class='${combustibleClass}'>${motor.ParMaximo}</td></tr>`;
-        });
-
-        tabla += "</tbody></table>"; // Finalmente, cuando ha terminado de iterar sobre los datos recibidos cierra con estas dos etiquetas de cierre para la tabla
-        tablaMotor.innerHTML = tabla; // Luego añade todo el código al HTML interno de la tabla para que lo coteje como código y no texto simple
-    } else { // En caso de no recibir ni un solo dato del JSON
-        tablaMotor.innerHTML = `<p style="margin-top: 2%;">No se encontraron motores en la base de datos</p>`; // ...muestra un mensaje de advertencia
+            // Luego crea un nuevo elemento llamado tabla y le inserta el código por escrito para generar dicha tabla
+            var tabla = "<table id='motores'><thead><tr><th>Combustible</th><th>Código de Motor</th><th>Tipo de motor</th><th>Cilindrada</th><th>Relación de compresión</th><th>Diametro y carrera</th><th>Potencia máxima</th><th>Par máximo</th></tr></thead><tbody>";
+    
+            motores.forEach(motor => { // Luego usando el método de String "forEach()" itera sobre cada uno de los subarrays dentro del array de motores que recibe en JSON
+    
+                // Luego pasa por este bloque if - else para comparar lo siguiente
+                if (motor.combustible == "Hibrido / Gasolina") { // Si el combustible del motor es híbrido de gasolina
+                    var combustibleClass = motor.Combustible.slice(0, 7).toLowerCase(); // Convierte el input de texto en minúsculas y se queda solo con la palabra hibrido para el CSS
+                } else { // Si el combustible es cualquiera de los otros dos tipos
+                    var combustibleClass = motor.Combustible.toLowerCase(); // Simplemente lo pasa a minúsculas
+                }
+    
+                // Luego genera una tabla con todos los datos necesarios para crear dicha fila de datos sobre el motor en esa iteración
+                tabla += `<tr><td class='${combustibleClass}'>${motor.Combustible}</td><td class='${combustibleClass}'>${motor.CodigoMotor}</td><td class='${combustibleClass}'>${motor.TipoMotor}</td><td class='${combustibleClass}'>${motor.Cilindrada}</td><td class='${combustibleClass}'>${motor.RelacionCompresion}</td><td class='${combustibleClass}'>${motor.DiametroCarrera}</td><td class='${combustibleClass}'>${motor.PotenciaMaxima}</td><td class='${combustibleClass}'>${motor.ParMaximo}</td></tr>`;
+            });
+    
+            tabla += "</tbody></table>"; // Finalmente, cuando ha terminado de iterar sobre los datos recibidos cierra con estas dos etiquetas de cierre para la tabla
+            tablaMotor.innerHTML = tabla; // Luego añade todo el código al HTML interno de la tabla para que lo coteje como código y no texto simple
+        } else { // En caso de no recibir ni un solo dato del JSON
+            tablaMotor.innerHTML = `<p style="margin-top: 2%;">No se encontraron motores en la base de datos</p>`; // ...muestra un mensaje de advertencia
+        }
     }
 }
 
@@ -84,28 +88,31 @@ function mostrarMotorPorCodigo(motores, CodigoMotor){ // Función mostrarMotorPo
 
     var tablaMotor = document.getElementById('tabla_motor'); // Se crea un handler para el contenedor de que recoge a la tabla
 
-    if(motores){ // Verifica si se ha encontrado un motor
+    if(motores){ // Primero verifica si se ha encontrado un motor
 
-        // Se crea un handler para generar la tabla con los datos del motor específico, tambien se añade la clase de cada td según el combustible que use
-        var tabla = "<table id='motores'><thead><tr><th>Combustible</th><th>Código de Motor</th><th>Tipo de motor</th><th>Relación de compresión</th><th>Diametro y carrera</th><th>Potencia máxima</th><th>Par máximo</th></tr></thead><tbody>";
+        if(motores.length > 0){ // Luego verifica si el array de motores es al menos mayor que 0 (Lo que significa que ha encontrado al menos una coincidencia)
 
-        motores.forEach(motor => {
+            // Se crea un handler para generar la tabla con los datos del motor específico, tambien se añade la clase de cada td según el combustible que use
+            var tabla = "<table id='motores'><thead><tr><th>Combustible</th><th>Código de Motor</th><th>Tipo de motor</th><th>Relación de compresión</th><th>Diametro y carrera</th><th>Potencia máxima</th><th>Par máximo</th></tr></thead><tbody>";
 
-            // Luego se pasa por este bloque if - else para comparar la siguiente condición
-            if (motor.combustible == "Hibrido / Gasolina") { // Si el combustible del motor es híbrido de gasolina
-                var combustibleClass = motor.Combustible.slice(0, 7).toLowerCase(); // Convierte el input de texto en minúsculas y se queda solo con la palabra hibrido para el CSS
-            } else { // Si el combustible es cualquiera de los otros dos tipos
-                var combustibleClass = motor.Combustible.toLowerCase(); // Simplemente lo pasa a minúsculas
-            }
+            motores.forEach(motor => {
 
-            // Luego se crea el código para generar la parte de la tabla que muestra la información del motor buscado
-            tabla += `<tr><td class='${combustibleClass}'>${motor.Combustible}</td><td class='${combustibleClass}'>${motor.CodigoMotor}</td><td class='${combustibleClass}'>${motor.TipoMotor}</td><td class='${combustibleClass}'>${motor.RelacionCompresion}</td><td class='${combustibleClass}'>${motor.DiametroCarrera}</td><td class='${combustibleClass}'>${motor.PotenciaMaxima}</td><td class='${combustibleClass}'>${motor.ParMaximo}</td></tr>`;
-        })
-        tabla += "</tbody></table>"; // Luego se cierra con las etiquetas de cierre de la tabla
+                // Luego se pasa por este bloque if - else para comparar la siguiente condición
+                if (motor.combustible == "Hibrido / Gasolina") { // Si el combustible del motor es híbrido de gasolina
+                    var combustibleClass = motor.Combustible.slice(0, 7).toLowerCase(); // Convierte el input de texto en minúsculas y se queda solo con la palabra hibrido para el CSS
+                } else { // Si el combustible es cualquiera de los otros dos tipos
+                    var combustibleClass = motor.Combustible.toLowerCase(); // Simplemente lo pasa a minúsculas
+                }
 
-        tablaMotor.innerHTML = tabla; // Se agrega al HTML interno la tabla generada
-    } else { // En caso de no encontrar el motor...
-        tablaMotor.innerHTML = `<p style="margin-top: 2%;">No se encontraron datos para el código de motor '${CodigoMotor}'</p>`; // ...muestra un mensaje de advertencia
+                // Luego se crea el código para generar la parte de la tabla que muestra la información del motor buscado
+                tabla += `<tr><td class='${combustibleClass}'>${motor.Combustible}</td><td class='${combustibleClass}'>${motor.CodigoMotor}</td><td class='${combustibleClass}'>${motor.TipoMotor}</td><td class='${combustibleClass}'>${motor.RelacionCompresion}</td><td class='${combustibleClass}'>${motor.DiametroCarrera}</td><td class='${combustibleClass}'>${motor.PotenciaMaxima}</td><td class='${combustibleClass}'>${motor.ParMaximo}</td></tr>`;
+            })
+            tabla += "</tbody></table>"; // Luego se cierra con las etiquetas de cierre de la tabla
+
+            tablaMotor.innerHTML = tabla; // Se agrega al HTML interno la tabla generada
+        } else { // En caso de recibir el array vacio (Lo que significa no encontrar ni una sola coincidencia)...
+            tablaMotor.innerHTML = `<p style="margin-top: 2%;">No se encontraron datos para el código de motor '${CodigoMotor}'</p>`; // ...muestra un mensaje de advertencia
+        }
     }
 }
 
@@ -128,7 +135,14 @@ function mostrarMotorizaciones(motorizaciones) {
 
     motorizaciones.forEach(motorizacion => {
         
-        datos += `<tr><td>${motorizacion.CodigoMotor}</td><td>${motorizacion.PeriodoUso}</td></tr>`;
+        // Luego pasa por este bloque if - else para comparar lo siguiente
+        if (motorizacion.Combustible == "Hibrido / Gasolina") { // Si el combustible del motor es híbrido de gasolina
+            var combustibleClass = motorizacion.Combustible.slice(0, 7).toLowerCase(); // Convierte el input de texto en minúsculas y se queda solo con la palabra hibrido para el CSS
+        } else { // Si el combustible es cualquiera de los otros dos tipos
+            var combustibleClass = motorizacion.Combustible.toLowerCase(); // Simplemente lo pasa a minúsculas
+        }
+
+        datos += `<tr><td class='${combustibleClass}'>${motorizacion.CodigoMotor}</td><td class='${combustibleClass}'>${motorizacion.PeriodoUso}</td></tr>`;
     })
 
     datos += "</tbody></table>";

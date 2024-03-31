@@ -28,7 +28,7 @@ api.listen(PORT, () => {
 });
 
 api.get('/TodosMotores', (req, res) => {
-  db.query('SELECT * FROM motores', (err, results) => {
+  db.query('SELECT * FROM motores ORDER BY ?', (err, results) => {
     if (err) throw err;
     res.json(results);
   });
@@ -52,7 +52,7 @@ api.get('/ModeloPorID/:ModeloID', (req, res) => {
 
 api.get('/MotorizacionesPorID/:ModeloID', (req, res) => {
   const { ModeloID } = req.params;
-  db.query('SELECT motorizaciones.PeriodoUso, motores.CodigoMotor FROM motorizaciones INNER JOIN motores ON motorizaciones.CodigoMotorID = motores.ID WHERE motorizaciones.ModeloID = ?', [ModeloID], (err, results) => {
+  db.query('SELECT motorizaciones.PeriodoUso, motores.CodigoMotor, motores.Combustible FROM motorizaciones INNER JOIN motores ON motorizaciones.CodigoMotorID = motores.ID WHERE motorizaciones.ModeloID = ?', [ModeloID], (err, results) => {
     if (err) throw err;
     res.json(results);
   });
