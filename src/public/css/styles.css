@@ -88,7 +88,13 @@
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+    }
+
+    .contenedor_caracteristicas_modelo section {
+        display: flex;
+        flex-direction: column;
         align-items: center;
+        width: 40%;
     }
 
     .section_imagenes_modelo {
@@ -195,6 +201,21 @@
         width: 100%;
         height: 300px;
         object-fit: contain;
+    }
+
+    #datos_modelo {
+        margin-top: 1.75em;
+        margin-bottom: 1em;
+    }
+
+    .modelo_manual_taller {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .modelo_manual_taller a {
+        color: black;
     }
     
 /* - LISTA DATOS MODELO - */
@@ -416,10 +437,11 @@
 
     /* - TABLA DE MOTORIZACIONES - */
 
-        #tabla_motorizaciones{
+        #tabla_motorizaciones {
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-top: 1.75em;
         }
 
     /* - TABLA DE MOTORIZACIONES - */
@@ -463,3 +485,38 @@
         margin-bottom: 4em;
     }
 /* - IMAGES - */
+
+/* - S2000 - */
+
+    #S2K_article1 {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    #S2K_article2 {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+    }
+
+    #S2K_article_paragraph{
+        margin: 2%;
+    }
+
+/* - S2000 - */
+
+/* - WARNING - */
+
+    #warning_paragraph {
+        display: flex;
+        align-self: center;
+    }
+
+    .warning_img {
+        width: 1%;
+    }
+
+/* - WARNING - */

@@ -93,7 +93,7 @@ function mostrarMotorPorCodigo(motores, CodigoMotor){ // Función mostrarMotorPo
         if(motores.length > 0){ // Luego verifica si el array de motores es al menos mayor que 0 (Lo que significa que ha encontrado al menos una coincidencia)
 
             // Se crea un handler para generar la tabla con los datos del motor específico, tambien se añade la clase de cada td según el combustible que use
-            var tabla = "<table id='motores'><thead><tr><th>Combustible</th><th>Código de Motor</th><th>Tipo de motor</th><th>Relación de compresión</th><th>Diametro y carrera</th><th>Potencia máxima</th><th>Par máximo</th></tr></thead><tbody>";
+            var tabla = "<table id='motores'><thead><tr><th>Combustible</th><th>Código de Motor</th><th>Tipo de motor</th><th>Cilindrada</th><th>Relación de compresión</th><th>Diametro y carrera</th><th>Potencia máxima</th><th>Par máximo</th></tr></thead><tbody>";
 
             motores.forEach(motor => {
 
@@ -105,7 +105,7 @@ function mostrarMotorPorCodigo(motores, CodigoMotor){ // Función mostrarMotorPo
                 }
 
                 // Luego se crea el código para generar la parte de la tabla que muestra la información del motor buscado
-                tabla += `<tr><td class='${combustibleClass}'>${motor.Combustible}</td><td class='${combustibleClass}'>${motor.CodigoMotor}</td><td class='${combustibleClass}'>${motor.TipoMotor}</td><td class='${combustibleClass}'>${motor.RelacionCompresion}</td><td class='${combustibleClass}'>${motor.DiametroCarrera}</td><td class='${combustibleClass}'>${motor.PotenciaMaxima}</td><td class='${combustibleClass}'>${motor.ParMaximo}</td></tr>`;
+                tabla += `<tr><td class='${combustibleClass}'>${motor.Combustible}</td><td class='${combustibleClass}'>${motor.CodigoMotor}</td><td class='${combustibleClass}'>${motor.TipoMotor}</td><td class='${combustibleClass}'>${motor.Cilindrada}</td><td class='${combustibleClass}'>${motor.RelacionCompresion}</td><td class='${combustibleClass}'>${motor.DiametroCarrera}</td><td class='${combustibleClass}'>${motor.PotenciaMaxima}</td><td class='${combustibleClass}'>${motor.ParMaximo}</td></tr>`;
             })
             tabla += "</tbody></table>"; // Luego se cierra con las etiquetas de cierre de la tabla
 
@@ -120,8 +120,16 @@ function mostrarDatosModelo(modelo) {
     var container = document.getElementById('datos_modelo');
 
     var data_list = "<ul>";
-    data_list += `<li>Longitud de chasis: ${modelo.LongitudChasis}</li><li>Peso: ${modelo.Peso}</li><li>Transmision ${modelo.Transmision}</li>`;
-    data_list += "</ul>";
+    
+    if(modelo.datosExtra != null) {
+
+        data_list += `<li>Longitud de chasis: ${modelo.LongitudChasis}</li><li>Peso: ${modelo.Peso}</li><li>Transmision ${modelo.Transmision}</li><li>Datos extra: ${modelo.datosExtra}</li>`;
+        data_list += "</ul>";
+    } else {
+
+        data_list += `<li>Longitud de chasis: ${modelo.LongitudChasis}</li><li>Peso: ${modelo.Peso}</li><li>Transmision ${modelo.Transmision}</li>`;
+        data_list += "</ul>";
+    }
 
     container.innerHTML = data_list;
 }
