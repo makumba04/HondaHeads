@@ -135,3 +135,10 @@ https://flickity.metafizzy.co
   .flickity-page-dots .dot.is-selected {
     opacity: 1;
   }
+
+@media (min-width: 320px) and (max-width: 480px) {
+
+  .flickity-prev-next-button {
+    display: none;
+  }
+}
