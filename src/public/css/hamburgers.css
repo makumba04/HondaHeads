@@ -39,9 +39,9 @@
   top: 50%;
   margin-top: -2px; }
   .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
-    width: 40px;
+    width: 30px;
     height: 4px;
-    background-color: #000;
+    background-color: #eeeeee;
     border-radius: 4px;
     position: absolute;
     transition-property: transform;

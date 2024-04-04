@@ -81,7 +81,6 @@
     }
 
     article{
-        display: flex;
         flex-direction: column;
         margin: 1% 0 3% 0;
     }
@@ -171,7 +170,6 @@
         font-family: HondaFont;
         border-bottom: 1px dashed grey;
     }
-
     .introduccion_h2{
         display: flex;
         flex-direction: row;
@@ -180,7 +178,6 @@
         padding: 0.5%;
         margin-bottom: 2%;
     }
-    
     .introduccion_h2_txt{
         width: 97%;
         display: flex;
@@ -188,13 +185,11 @@
         align-items: center;
         justify-content: space-between;
     }
-
     .introduccion_h2_txt h2{
         border: none;
         margin-bottom: 0;
         padding-bottom: 0;
     }
-
     h3{
         font-size: 1.2em;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -208,27 +203,22 @@
     ul{
         margin-left: 1.5em;
     }
-
     .img_modelo {
         width: 66%;
     }
-
     .img_modelo img{
         width: 100%;
         height: 300px;
         object-fit: contain;
     }
-
     #datos_modelo {
         margin: 1.75em 0 1em 0;
     }
-
     .modelo_manual_taller {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-
     .modelo_manual_taller a {
         color: black;
     }
@@ -237,7 +227,8 @@
 
 /* - REDES SOCIALES - */
     
-    .social_wrapper1{
+    .social_wrapper1,
+    .social_wrapper2{
         width: 20%;
         display: flex;
         flex-direction: row;
@@ -246,11 +237,6 @@
         margin-left: 0.1%;
     }
     .social_wrapper2{
-        width: 20%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-evenly;
         margin-top: 2%;
     }
     .social_image{
@@ -297,7 +283,8 @@
         margin: 0 auto;
     }
 
-    .card {      
+    .card,
+    .card_gen {      
         display: flex;
         flex-direction: column;
         width: 66%;
@@ -306,15 +293,9 @@
         border: 1px solid black;
         counter-increment: card;
     }
-
+    
     .card_gen {      
-        display: flex;
-        flex-direction: column;
-        width: 66%;
         height: auto;
-        margin: 0 10% 2% 0;
-        border: 1px solid black;
-        counter-increment: card;
     }
     
     .card:before {
@@ -325,7 +306,8 @@
         color: white;
     }
     
-    .card_img {
+    .card_img,
+    .card_img_gen{
         display: flex;
         flex-direction: column;
         height: 65%;
@@ -334,25 +316,21 @@
     }
     
     .card_img_gen {
-        height: 65%;
         width: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
     }
     
-    .card_img_top {
+    .card_img_top,
+    .card_img_top_gen {
         width: 90%;
     }
 
     .card_img_top_gen {
-        width: 90%;
         height: auto;
         margin-top: 4%;
     }
-    
-    .card_body {
+
+    .card_body,
+    .card_body_gen {
         display: flex;
         flex-direction: column;
         height: 35%;
@@ -362,11 +340,6 @@
 
     .card_body_gen {
         margin: 2% 0 2% 0;
-        display: flex;
-        flex-direction: column;
-        height: 35%;
-        align-items: center;
-        justify-content: space-evenly;
     }
 
 /* - CARDS - */
@@ -420,7 +393,7 @@
             justify-content: center;
             max-height: 400px;
             overflow: scroll;
-            margin-top: 2%;
+            margin: 1em 0 0 0;
         }
 
         #motores th, td{
@@ -486,7 +459,9 @@
 /* - IMAGES - */
 
     .h2_logo{
-        width: 2.5em;
+        width: 3em;
+        height: 100%;
+        object-fit: contain;
         margin: 0 1% 0 0;
     }
 
@@ -501,18 +476,15 @@
 
 /* - S2000 - */
 
-    #S2K_article1 {
+    #S2K_article1, 
+    #S2K_article2{
         width: 100%;
         height: auto;
         display: flex;
-        flex-direction: row-reverse;
     }
 
-    #S2K_article2 {
-        width: 100%;
-        height: auto;
-        display: flex;
-        flex-direction: row;
+    #S2K_article1 {
+        flex-direction: row-reverse;
     }
 
     #S2K_article_paragraph{
@@ -536,21 +508,22 @@
 
 /*####################################################################################################################################################################################################################################*/
 
-@media (min-width: 320px) and (max-width: 767px) and (orientation: portrait) {
+@media (min-width: 320px) and (max-width: 374px) {
 
     header {
         width: 100%;
         height: auto;
         flex-direction: row;
-        justify-content: space-evenly;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0.5em 0 0.5em 0;
+    }
+    header button {
+        width: auto;
+        height: auto;
+        display: block;
         align-items: center;
     }
-
-    header button {
-        display: block;
-        height: auto;
-    }
-
     nav {
         max-width: 100%;
         top: 40px;
@@ -558,175 +531,355 @@
         justify-content: center;
         display: none;
     }
-
     h1 {
         font-size: 0.70em;
         margin: 2%;
     }
+    .main_wrapper {
+        width: 100%;
+        padding: 10.5% 0 0 0;
+    }
+    h2{
+        font-size: 0.65em;
+    }
+    .introduccion_h2{
+        flex-direction: row;
+        margin-top: 0.5em;
+        padding-bottom: 0.5em;
+    }
+    .introduccion_h2_txt {
+        align-items: normal;
+        flex-direction: column;
+        line-height: 1.5;
+        font-size: 0.8em;
+    }
+    .h2_logo {
+        width: 3.5em;
+        margin-right: 3%;
+    }
+    .introduccion_h2 .h2_logo {
+        width: 2.6em;
+    }
+    .card {
+        width: 90%;
+    }
+    .card_gen {
+        width: 90%;
+    }
+    .gallery {
+        width: 100%;
+        margin-bottom: 20%;
+    }
+    #buscar_motor input {
+        width: 14em;
+    }
+    #tabla_motor {
+        justify-content: left;
+        margin: 1em 0 0 0;
+        overflow: scroll;
+        max-width: 100%;
 
+    }
+    footer {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    footer p {
+        margin: 0.5em 0 0.5em 0;
+    }
+    .social_wrapper1 {
+        width: 75%;
+        margin: 1em 0 1em 0;
+    }
+    .social_image {
+        width: 60px;
+        opacity: 1;
+    }
+    #honda_logo_white {
+        width: 85px;
+    }
+    .link_foro {
+        margin: 1em 0 1em 0;
+    }
+
+}
+
+@media (min-width: 375px) and (max-width: 424px){
+
+    header {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+    header button {
+        display: block;
+        height: auto;
+    }
+    nav {
+        max-width: 100%;
+        top: 40px;
+        flex-direction: column;
+        justify-content: center;
+        display: none;
+    }
+    h1{
+        font-size: 0.8em;
+        margin: 2%;
+    }
     .main_wrapper {
         width: 100%;
         padding: 10% 0 0 0;
     }
-
     h2{
         font-size: 0.75em;  
     }
-
     .introduccion_h2{
         flex-direction: row;
+        margin-top: 0.5em;
+        padding-bottom: 0.5em;
     }
-
     .introduccion_h2_txt {
         align-items: normal;
         flex-direction: column;
         line-height: 1.5;
         font-size: 0.9em;
     }
-
     .h2_logo {
         margin-right: 3%;
     }
-
     .card {
         width: 90%;
     }
-
-    .card_gen {
-        width: 90%;
-    }
-
     .gallery {
         width: 100%;
         margin-bottom: 20%;
     }
-
     #buscar_motor input {
         width: 14em;
     }
-
     #tabla_motor {
         justify-content: left;
-        margin: auto;
+        margin: 1em 0 0 0;
         overflow: scroll;
         max-width: 100%;
-
     }
-
     footer {
         flex-direction: column;
         align-items: center;
         justify-content: center;
     }
-
     footer p {
         margin: 0.5em 0 0.5em 0;
     }
-
     .social_wrapper1 {
         width: 75%;
-        margin: 1em 0 1em 0;
+        margin: 0.5em 0 0.5em 0;
     }
-
     .social_image {
         width: 60px;
         opacity: 1;
     }
-
     #honda_logo_white {
         width: 85px;
     }
-
     .link_foro {
-        margin: 1em 0 1em 0;
+        margin: 0.5em 0 0.5em 0;
     }
+
 }
 
-@media (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
-
+@media (min-width: 425px) and (max-width: 767px) {
+    
     header {
         width: 100%;
         height: auto;
-        flex-direction: column;
-        justify-content: center;
+        flex-direction: row;
+        justify-content: space-around;
         align-items: center;
     }
-
+    header button {
+        display: block;
+        height: auto;
+    }
     h1{
         font-size: 0.8em;
         margin: 2%;
     }
-
+    nav {
+        max-width: 100%;
+        top: 40px;
+        flex-direction: column;
+        justify-content: center;
+        display: none;
+    }
+    .introduccion_h2{
+        flex-direction: row;
+        margin-top: 0.7em;
+        padding-bottom: 0.7em;
+    }
+    .introduccion_h2_txt {
+        align-items: normal;
+        flex-direction: column;
+        line-height: 1.5;
+        font-size: 0.75em;
+    }
     .main_wrapper {
         width: 100%;
-        padding: 7.5% 0 0 0;
+        padding: 8% 0 0 0;
     }
-
-    h2{
-        font-size: 0.75em;  
-    }
-
-    .h2_logo {
-        margin-right: 3%;
-    }
-
     .card {
         width: 90%;
     }
-
     .gallery {
         width: 100%;
-        margin-bottom: 20%;
+        margin-bottom: 17%;
     }
-
     #buscar_motor input {
         width: 14em;
     }
+    #tabla_motor {
+        justify-content: left;
+        margin: 1em 0 0 0;
+        overflow: scroll;
+        max-width: 100%;
+    }
+    footer {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    footer p {
+        margin: 0.5em 0 0.5em 0;
+    }
+    .social_wrapper1 {
+        width: 75%;
+        margin: 0.5em 0 0.5em 0;
+    }
+    .social_image {
+        width: 60px;
+        opacity: 1;
+    }
+    #honda_logo_white {
+        width: 85px;
+    }
+    .link_foro {
+        margin: 0.5em 0 0.5em 0;
+    }
+}
 
+@media (min-width: 768px) and (max-width: 1023px) {
+    
+    header {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+    }
+    h1{
+        font-size: 0.8em;
+        margin: 1em 0 1em 2em;
+    }
+    nav {
+        max-width: 100%;
+        top: 68px;
+        flex-direction: row;
+    }
+    .main_wrapper {
+        width: 85%;
+        margin: 0 auto;
+        padding: 14% 0 2% 0;
+    }
+    .introduccion_h2{
+        flex-direction: row;
+        margin-top: 0.5em;
+        padding-bottom: 0.5em;
+    }
+    .introduccion_h2_txt {
+        align-items: normal;
+        flex-direction: column;
+        line-height: 1.5;
+        font-size: 0.85em;
+    }
+    .card {
+        width: 66%;
+    }
+    .gallery {
+        width: 100%;
+        margin-bottom: 10%;
+    }
+    #buscar_motor input {
+        width: 14em;
+    }
     #tabla_motor {
         justify-content: left;
         margin: auto;
         overflow: scroll;
         max-width: 100%;
     }
-
     footer {
         flex-direction: column;
         align-items: center;
         justify-content: center;
     }
-
     footer p {
         margin: 0.5em 0 0.5em 0;
     }
-
     .social_wrapper1 {
-        width: 75%;
+        width: 35%;
         margin: 0.5em 0 0.5em 0;
     }
-
     .social_image {
         width: 60px;
         opacity: 1;
     }
-
     #honda_logo_white {
         width: 85px;
     }
-
     .link_foro {
         margin: 0.5em 0 0.5em 0;
     }
 }
 
-@media (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
+@media (min-width: 1024px) {
 
-}
-
-@media (min-width: 1024px) and (max-width: 1649px) and (orientation: portrait) {
-
-}
-
-@media (min-width: 1650px) and (orientation: portrait) {
+    header {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+    }
+    h1 {
+        font-size: 0.8em;
+        margin: 1em 0 1em 2em;
+    }
+    nav {
+        max-width: 100%;
+        top: 75px;
+        flex-direction: row;
+    }
+    .main_wrapper {
+        width: 85%;
+        margin: 0 auto;
+        padding: 14% 0 2% 0;
+    }
+    .introduccion_h2 {
+        flex-direction: row;
+        margin-top: 0.5em;
+        padding-bottom: 0.5em;
+    }
+    .introduccion_h2_txt {
+        align-items: normal;
+        flex-direction: column;
+        line-height: 1.5;
+        font-size: 0.85em;
+    }
+    .card {
+        width: 66%;
+    }
+    .gallery {
+        width: 66%;
+        margin-bottom: 8%;
+    }
 
 }

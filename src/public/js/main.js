@@ -25,13 +25,11 @@ function buscarMotores() { // Función buscarMotores: Busca los motores en la ba
         .catch(error => console.error('Error:', error)); // Si ocurre algún tipo de error en el proceso lo envía a la consola
     }
 }
-
-function datosModelo(ModeloID){
-    buscarModelo(ModeloID);
-    buscarMotorizaciones(ModeloID);
+function datosModelo(ModeloID){ // Función datosModelo: Recoge las dos funciones que se utilizan en las páginas de modelo
+    buscarModelo(ModeloID); // Función 1
+    buscarMotorizaciones(ModeloID); // Función 2
 }
-
-function buscarModelo(ModeloID){
+function buscarModelo(ModeloID){ // Función buscarModelo: A través del ID del modelo, busca sus datos en la base de datos
     fetch(`http://localhost:3000/ModeloPorID/${ModeloID}`)
     .then(response => response.json())
     .then(data => {
@@ -40,8 +38,7 @@ function buscarModelo(ModeloID){
     })
     .catch(error => console.error('Error:', error));
 }
-
-function buscarMotorizaciones(ModeloID) {
+function buscarMotorizaciones(ModeloID) { // Función buscarMotorizaciones: A través del ID del modelo, busca sus motorizaciones asociadas en la base de datos
 
     fetch(`http://localhost:3000/MotorizacionesPorID/${ModeloID}`)
     .then(response => response.json())
@@ -51,7 +48,6 @@ function buscarMotorizaciones(ModeloID) {
     })
     .catch(error => console.error('Error:', error));
 }
-
 function mostrarTodosMotores(motores){ // Función mostrarTodosMotores: Recibe los datos de la función de busqueda para mostrarlos en una tabla
 
     var tablaMotor = document.getElementById('tabla_motor'); // Primero crea un handler para el contenedor de la tabla
@@ -83,7 +79,6 @@ function mostrarTodosMotores(motores){ // Función mostrarTodosMotores: Recibe l
         }
     }
 }
-
 function mostrarMotorPorCodigo(motores, CodigoMotor){ // Función mostrarMotorPorCodigo: Recibe dos líneas de datos, la primera es el JSON con los datos del motor y la segunda es el código de motor específico
 
     var tablaMotor = document.getElementById('tabla_motor'); // Se crea un handler para el contenedor de que recoge a la tabla
@@ -115,7 +110,6 @@ function mostrarMotorPorCodigo(motores, CodigoMotor){ // Función mostrarMotorPo
         }
     }
 }
-
 function mostrarDatosModelo(modelo) {
     var container = document.getElementById('datos_modelo');
 
@@ -133,9 +127,6 @@ function mostrarDatosModelo(modelo) {
 
     container.innerHTML = data_list;
 }
-
-
-
 function mostrarMotorizaciones(motorizaciones) {
     
     var tabla = document.getElementById('tabla_motorizaciones');
