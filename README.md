@@ -3,6 +3,8 @@ Nombre de proyecto: "HondaHeads Project"
 Autor: Pablo Cabello Ruz
 Inicio del desarrollo: 22 de Marzo de 2024
 
+<img src="public/images/HondaLogoRed.png" width="400">
+
 El objetivo de este proyecto radica en crear un sitio web dedicado al nicho de amantes del mundo automóvil, más concretamente a los aficionados de la marca japonesa Honda. Esta web consta de dos partes, la primera es un foro con todas las funcionalidades básicas de dicho tipo de programa web. Esto incluye:
 
     1.- Crear hilos de conversación.
