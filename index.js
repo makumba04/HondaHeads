@@ -52,7 +52,7 @@ db.connect((err) => {
   // Models
   app.get('/model/:id', function(req, res){
     const {id} = req.params;
-    db.query('SELECT modelos.nombreModelo, modelos.description, generaciones.rutaPortada, generaciones.nombreGeneracion, generaciones.periodo FROM modelos INNER JOIN generaciones ON modelos.id = generaciones.modelo_id WHERE modelos.id = ?', [id], (err, results) => {
+    db.query('SELECT modelos.nombreModelo, modelos.intro, modelos.historia, modelos.legado, generaciones.rutaPortada, generaciones.nombreGeneracion, generaciones.periodo FROM modelos INNER JOIN generaciones ON modelos.id = generaciones.modelo_id WHERE modelos.id = ?', [id], (err, results) => {
       if (err) throw err;
       res.render('ModelTemplate', {
         title: 'modelo',
