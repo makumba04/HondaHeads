@@ -1,16 +1,18 @@
 doctype html 
 html(lang='es')
-    head
+    block head
         script(src="/js/main.js")
-        script(src="/js/carrusel.js")
+        script(src="/js/carrusel.js") 
         link(rel="stylesheet", href="/css/carrusel.css")
         link(rel="stylesheet", href="/css/hamburgers.css")
         link(rel="stylesheet", href="/css/reset.css")
         link(rel="stylesheet", href="/css/styles.css")
+        link(rel="shortcut icon", href="/images/favicon.ico", type="image/x-icon")
         meta(content='width=device-width', initial-scale='1', shrink-to-fit='no', name='viewport')
-        title Hello World! 
-    body
+        title HondaHeads
+    block body
         block content
+        
         footer
             .social_wrapper1
                 a(href="https://www.honda.es/", target="_blank")
@@ -22,3 +24,4 @@ html(lang='es')
             a(href="#")
                 button.link_foro HondaHeads Club
             p HondaHeads, Co. © 2023
+    block onload

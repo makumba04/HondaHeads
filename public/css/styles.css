@@ -190,6 +190,9 @@
         margin-bottom: 0;
         padding-bottom: 0;
     }
+    .introH2 {
+        border: none;
+    }
     h3{
         font-size: 1.2em;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -386,6 +389,18 @@
 
 /* - TABLAS - */
 
+    /* - TABLA GENERACIONES */
+
+        .generations_table {
+            display: flex;
+        }
+
+        .generations_table > img {
+            max-width: 100%;
+        }
+
+    /* - TABLA GENERACIONES */
+
     /* - TABLA DE MOTORES - */
 
         #tabla_motor{
@@ -396,13 +411,16 @@
             margin: 1em 0 0 0;
         }
 
-        #motores th, td{
+        th, td{
             text-align: center;
             padding: 0.5%;
             border: 1px solid black; 
             min-width: 120px;
             width: 250px;
             height: 100%;
+        }
+
+        #motores th {
             background-color: #c2c2c2;
         }
 

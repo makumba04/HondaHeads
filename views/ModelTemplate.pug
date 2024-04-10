@@ -1,0 +1,37 @@
+extends layout 
+
+block content
+    header
+        a(href="/")
+            h1 HondaHeads
+    .main_wrapper
+        main
+            article
+                div.introduccion_h2
+                    img(src="/images/HondaLogoRed.png", class="h2_logo")
+                    div.introduccion_h2_txt
+                        h2.introH2 Introduccion
+                        h2.introH2 #{modelo[0].nombreModelo}
+                .model_content
+                    p #{modelo[0].description}
+            section
+                h2 
+                    img(src="/images/HondaLogoRed.png", class="h2_logo") 
+                    | Generaciones
+                ul.gallery.js-flickity(data-flickity-options='{ "wrapAround": true }')
+                    for generation in modelo
+                        li.card_gen
+                            .card_img_gen
+                                img.card_img_top_gen(src=`/images/${generation.rutaPortada}`)
+                            .card_body_gen
+                                h5 #{generation.nombreGeneracion}
+                                p #{generation.periodo}
+                                //- a(href=`/model/${generation.id}`)
+                                //-     button Ir
+            
+    script.
+        //- var ogTitle = document.title;
+        //- var modelname = ${modelo.nombreModelo};
+        //- var pageTitle = ogTitle + " | " + modelname;
+        //- document.title = pageTitle;
+    

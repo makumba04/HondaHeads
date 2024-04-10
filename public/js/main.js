@@ -10,7 +10,6 @@ function buscarMotores() { // Función buscarMotores: Busca los motores en la ba
         fetch(`http://localhost:3000/TodosMotores`) // El programa llama por URL al método de buscar todos los motores en la API
         .then(response => response.json()) // Guarda la respuesta en formato JSON
         .then(data => { // Luego hace las siguientes acciones con los datos...
-            console.log(data); // Primero la muestra en la consola (Esto desaparecerá en algún momento cuando termine el desarrollo de la web)
             mostrarTodosMotores(data); // Luego llama al método mostrarMotorPorCodigo enviandole los datos recibidos para que haga su función
         })
         .catch(error => console.error('Error:', error)); // Si ocurre algún tipo de error en el proceso lo envía a la consola
@@ -19,24 +18,10 @@ function buscarMotores() { // Función buscarMotores: Busca los motores en la ba
         fetch(`http://localhost:3000/MotorPorCodigo/${CodigoMotor}`) // Se llama a la función de búsqueda del motor por su código correspondiente
         .then(response => response.json()) // Guarda la respuesta en formato JSON
         .then(data => { // Luego hace las siguientes acciones con los datos...
-            console.log(data); // Primero la muestra en la consola (Esto desaparecerá en algún momento cuando termine el desarrollo de la web)
             mostrarMotorPorCodigo(data, CodigoMotor); // Luego llama al método mostrarTodosMotores enviandole los datos recibidos para que haga su función
         })
         .catch(error => console.error('Error:', error)); // Si ocurre algún tipo de error en el proceso lo envía a la consola
     }
-}
-function datosModelo(ModeloID){ // Función datosModelo: Recoge las dos funciones que se utilizan en las páginas de modelo
-    buscarModelo(ModeloID); // Función 1
-    buscarMotorizaciones(ModeloID); // Función 2
-}
-function buscarModelo(ModeloID){ // Función buscarModelo: A través del ID del modelo, busca sus datos en la base de datos
-    fetch(`http://localhost:3000/ModeloPorID/${ModeloID}`)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        mostrarDatosModelo(data);
-    })
-    .catch(error => console.error('Error:', error));
 }
 function buscarMotorizaciones(ModeloID) { // Función buscarMotorizaciones: A través del ID del modelo, busca sus motorizaciones asociadas en la base de datos
 
@@ -63,13 +48,13 @@ function mostrarTodosMotores(motores){ // Función mostrarTodosMotores: Recibe l
     
                 // Luego pasa por este bloque if - else para comparar lo siguiente
                 if (motor.combustible == "Hibrido / Gasolina") { // Si el combustible del motor es híbrido de gasolina
-                    var combustibleClass = motor.Combustible.slice(0, 7).toLowerCase(); // Convierte el input de texto en minúsculas y se queda solo con la palabra hibrido para el CSS
+                    var combustibleClass = motor.combustible.slice(0, 7).toLowerCase(); // Convierte el input de texto en minúsculas y se queda solo con la palabra hibrido para el CSS
                 } else { // Si el combustible es cualquiera de los otros dos tipos
-                    var combustibleClass = motor.Combustible.toLowerCase(); // Simplemente lo pasa a minúsculas
+                    var combustibleClass = motor.combustible.toLowerCase(); // Simplemente lo pasa a minúsculas
                 }
-    
+
                 // Luego genera una tabla con todos los datos necesarios para crear dicha fila de datos sobre el motor en esa iteración
-                tabla += `<tr><td class='${combustibleClass}'>${motor.Combustible}</td><td class='${combustibleClass}'>${motor.CodigoMotor}</td><td class='${combustibleClass}'>${motor.TipoMotor}</td><td class='${combustibleClass}'>${motor.Cilindrada}</td><td class='${combustibleClass}'>${motor.RelacionCompresion}</td><td class='${combustibleClass}'>${motor.DiametroCarrera}</td><td class='${combustibleClass}'>${motor.PotenciaMaxima}</td><td class='${combustibleClass}'>${motor.ParMaximo}</td></tr>`;
+                tabla += `<tr><td class='${combustibleClass}'>${motor.combustible}</td><td class='${combustibleClass}'>${motor.codigoMotor}</td><td class='${combustibleClass}'>${motor.tipoMotor}</td><td class='${combustibleClass}'>${motor.cilindrada}</td><td class='${combustibleClass}'>${motor.relacionCompresion}</td><td class='${combustibleClass}'>${motor.diametroCarrera}</td><td class='${combustibleClass}'>${motor.potenciaMaxima}</td><td class='${combustibleClass}'>${motor.parMaximo}</td></tr>`;
             });
     
             tabla += "</tbody></table>"; // Finalmente, cuando ha terminado de iterar sobre los datos recibidos cierra con estas dos etiquetas de cierre para la tabla
@@ -94,13 +79,13 @@ function mostrarMotorPorCodigo(motores, CodigoMotor){ // Función mostrarMotorPo
 
                 // Luego se pasa por este bloque if - else para comparar la siguiente condición
                 if (motor.combustible == "Hibrido / Gasolina") { // Si el combustible del motor es híbrido de gasolina
-                    var combustibleClass = motor.Combustible.slice(0, 7).toLowerCase(); // Convierte el input de texto en minúsculas y se queda solo con la palabra hibrido para el CSS
+                    var combustibleClass = motor.combustible.slice(0, 7).toLowerCase(); // Convierte el input de texto en minúsculas y se queda solo con la palabra hibrido para el CSS
                 } else { // Si el combustible es cualquiera de los otros dos tipos
-                    var combustibleClass = motor.Combustible.toLowerCase(); // Simplemente lo pasa a minúsculas
+                    var combustibleClass = motor.combustible.toLowerCase(); // Simplemente lo pasa a minúsculas
                 }
 
                 // Luego se crea el código para generar la parte de la tabla que muestra la información del motor buscado
-                tabla += `<tr><td class='${combustibleClass}'>${motor.Combustible}</td><td class='${combustibleClass}'>${motor.CodigoMotor}</td><td class='${combustibleClass}'>${motor.TipoMotor}</td><td class='${combustibleClass}'>${motor.Cilindrada}</td><td class='${combustibleClass}'>${motor.RelacionCompresion}</td><td class='${combustibleClass}'>${motor.DiametroCarrera}</td><td class='${combustibleClass}'>${motor.PotenciaMaxima}</td><td class='${combustibleClass}'>${motor.ParMaximo}</td></tr>`;
+                tabla += `<tr><td class='${combustibleClass}'>${motor.combustible}</td><td class='${combustibleClass}'>${motor.codigoMotor}</td><td class='${combustibleClass}'>${motor.tipoMotor}</td><td class='${combustibleClass}'>${motor.cilindrada}</td><td class='${combustibleClass}'>${motor.relacionCompresion}</td><td class='${combustibleClass}'>${motor.diametroCarrera}</td><td class='${combustibleClass}'>${motor.potenciaMaxima}</td><td class='${combustibleClass}'>${motor.parMaximo}</td></tr>`;
             })
             tabla += "</tbody></table>"; // Luego se cierra con las etiquetas de cierre de la tabla
 

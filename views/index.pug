@@ -1,5 +1,11 @@
 extends layout.pug
 
+//- block onload
+//-     script.
+//-         document.addEventListener('DOMContentLoaded', function(){
+//-             allModels();
+//-         });
+
 block content
     header
         a(href="#")
@@ -16,11 +22,36 @@ block content
                 h2
                     img.h2_logo(src="/images/HondaLogoRed.png", alt="")
                     | Modelos
+
+                ul.gallery.js-flickity(data-flickity-options='{ "wrapAround": true }')
+                    for modelo in modelos
+                        li.card
+                            .card_img
+                                img.card_img_top(src=`/images/${modelo.rutaPortada}`)
+                            .card_body
+                                h5 #{modelo.nombreModelo}
+                                p #{modelo.periodo}
+                                a(href=`/model/${modelo.id}`)
+                                    button Ir
             section 
                 h2
                     img.h2_logo(src="/images/HondaLogoRed.png", alt="")
                     | Motores
+                #buscar_motor
+                    input#CodigoMotor(type="text", placeholder="Introduce el código de motor...")
+                    button#buscar_btn(onclick="buscarMotores()")
+                        img(src="/images/LupaBuscar.png", alt="")
+                #tabla_motor
             section 
                 h2
                     img.h2_logo(src="/images/HondaLogoRed.png", alt="")
                     | Redes
+                div.social_wrapper2
+                    a(href="https://www.instagram.com/hondaheadsclub/", target="_blank")
+                        img.social_image(src="/images/LogoInstaBlack.png", alt="")
+                    a(href="https://twitter.com/hondaheadsclub", target="_blank")
+                        img.social_image(src="/images/LogoXBlack.png", alt="") 
+    script.
+        var ogTitle = document.title;
+        var pageTitle = ogTitle + " | Inicio";
+        document.title = pageTitle;
