@@ -25,7 +25,7 @@ const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
-  database: 'hondaAPI',
+  database: 'hondawiki',
 });
 
 db.connect((err) => {
@@ -52,7 +52,7 @@ db.connect((err) => {
   // Models
   app.get('/model/:id', function(req, res){
     const {id} = req.params;
-    db.query('SELECT modelos.nombreModelo, modelos.intro, modelos.historia, modelos.legado, generaciones.rutaPortada, generaciones.nombreGeneracion, generaciones.periodo FROM modelos INNER JOIN generaciones ON modelos.id = generaciones.modelo_id WHERE modelos.id = ?', [id], (err, results) => {
+    db.query('SELECT modelos.nombreModelo, modelos.intro, modelos.historia, modelos.legado, generaciones.id, generaciones.rutaPortada, generaciones.nombreGeneracion, generaciones.periodo FROM modelos INNER JOIN generaciones ON modelos.id = generaciones.modelo_id WHERE modelos.id = ?', [id], (err, results) => {
       if (err) throw err;
       res.render('ModelTemplate', {
         title: 'modelo',
@@ -62,9 +62,15 @@ db.connect((err) => {
   });
 
   // Generations
-  app.get('/generations/:generation_id', function(req, res){
-    const generation_id = req.params.generation_id;
-    res.render('GenerationTemplate', { generation_id: generation_id});
+  app.get('/generations/:id', function(req, res){
+    const id = req.params.id;
+    db.query('SELECT modelos.nombreModelo, generaciones.* FROM generaciones INNER JOIN modelos ON generaciones.modelo_id = modelos.id WHERE generaciones.id = ?', [id], (err, results) => {
+      if (err) throw err;
+      res.render('GenerationTemplate', { 
+        title: 'generation',
+        generation: results[0]
+      });
+    });
   });
 
   app.get('/generationInfo/:id', (req, res) => { // Función 'generationInfo': Saca los datos de una generación por su ID

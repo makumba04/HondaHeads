@@ -1,0 +1,44 @@
+//- #################################################################################################
+//- IMPORTANTE HAY QUE TERMINAR EL SLIDER HORIZONTAL Y AÑADIR EL MODO DE MONTAR IFRAME VIDEO DESDE BD
+//- #################################################################################################
+
+extends layout
+
+block content 
+    header
+        a(href="/")
+            h1 HondaHeads 
+    nav
+        a(href="/")
+            button Inicio
+        span >
+        a(href=`/model/${generation.modelo_id}`)
+            button #{generation.nombreModelo} 
+        span >
+        a(href="#")
+            button #{generation.nombreGeneracion} 
+    .main_wrapper
+            main
+                h2
+                    img(src="/images/HondaLogoRed.png", class="h2_logo")
+                    |   #{generation.titulo}
+                article
+                    div    
+                        img(src=`/images/${generation.rutaSlides}jpg`)
+                        h3 Historia
+                        p #{generation.historia}
+                div.contenedor_caracteristicas_generacion
+                    section 
+                        h3 Características básicas
+                        div#datos_generacion
+                    section
+                        h3 Motorizaciones 
+                        div#tabla_motorizaciones
+                section.section_imagenes_generacion
+                    h3 Imagenes
+                    div.video
+
+                    ul.gallery.js-flickity(data-flickity-options='{ "wrapAround": true }')
+                        for slide in generation
+                            li.img_modelo
+                                img(src="")
