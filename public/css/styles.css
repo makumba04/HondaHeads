@@ -59,9 +59,13 @@
         z-index: 1;
     }
 
-    nav a button{
-        width: 10rem;
-        margin-right: 2%;
+    nav a{
+        width: auto;
+    }
+
+    nav a button {
+        width: 100%;
+        font-size: 1em;
     }
 
     .main_wrapper{

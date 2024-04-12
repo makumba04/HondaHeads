@@ -73,11 +73,19 @@ db.connect((err) => {
     });
   });
 
-  app.get('/generationInfo/:id', (req, res) => { // Función 'generationInfo': Saca los datos de una generación por su ID
-    const { id } = req.params;
-    db.query('SELECT * FROM generaciones WHERE ID = ?', [id], (err, results) => {
+  app.get('/generationData/:generation_id', (req, res) => {
+    const { generation_id } = req.params;
+    db.query('SELECT * FROM generaciones WHERE id = ?', [generation_id], (err, results) =>{
+      if(err) throw err;
+      res.json(results[0])
+    });
+  });
+
+  app.get('/motorizations/:generation_id', (req, res) => {
+    const { generation_id } = req.params;
+    db.query('SELECT motorizaciones.periodoUso, motores.codigoMotor, motores.combustible FROM motorizaciones INNER JOIN motores ON motorizaciones.codigomotor_id = motores.id WHERE motorizaciones.generacion_id = ?', [generation_id], (err, results) => {
       if (err) throw err;
-      res.json(results[0]);
+      res.json(results);
     });
   });
 
@@ -91,14 +99,6 @@ db.connect((err) => {
   app.get('/MotorPorCodigo/:CodigoMotor', (req, res) => {
     const { CodigoMotor } = req.params;
     db.query('SELECT * FROM motores WHERE CodigoMotor LIKE ?', [`${CodigoMotor}%`], (err, results) => {
-      if (err) throw err;
-      res.json(results);
-    });
-  });
-
-  app.get('/MotorizacionesPorID/:ModeloID', (req, res) => {
-    const { ModeloID } = req.params;
-    db.query('SELECT motorizaciones.PeriodoUso, motores.CodigoMotor, motores.Combustible FROM motorizaciones INNER JOIN motores ON motorizaciones.CodigoMotorID = motores.ID WHERE motorizaciones.ModeloID = ?', [ModeloID], (err, results) => {
       if (err) throw err;
       res.json(results);
     });

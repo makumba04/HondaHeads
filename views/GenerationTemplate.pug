@@ -1,8 +1,11 @@
-//- #################################################################################################
-//- IMPORTANTE HAY QUE TERMINAR EL SLIDER HORIZONTAL Y AÑADIR EL MODO DE MONTAR IFRAME VIDEO DESDE BD
-//- #################################################################################################
-
 extends layout
+
+block onload
+    script.
+        document.addEventListener("DOMContentLoaded", function() {
+            var generationId = #{generation.id};
+            generationData(generationId);
+        });
 
 block content 
     header
@@ -33,12 +36,12 @@ block content
                         div#datos_generacion
                     section
                         h3 Motorizaciones 
-                        div#tabla_motorizaciones
+                        div#motorizaciones_generacion
                 section.section_imagenes_generacion
                     h3 Imagenes
-                    div.video
-
+                    div.video 
+                        #{generation.video}
                     ul.gallery.js-flickity(data-flickity-options='{ "wrapAround": true }')
-                        for slide in generation
+                        each i in [2, 3, 4, 5]
                             li.img_modelo
-                                img(src="")
+                                img(src=`/images/${generation.rutaSlides}${i}.jpg`)
