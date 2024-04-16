@@ -1,7 +1,7 @@
 # HondaHeads
-Nombre de proyecto: "HondaHeads Project"
-Autor: Pablo Cabello Ruz
-Inicio del desarrollo: 22 de Marzo de 2024
+Nombre de proyecto: "HondaHeads Project"<br/>
+Autor: makumba04<br/>
+Inicio del desarrollo: 22 de Marzo de 2024<br/>
 
 <img src="public/images/Logo.PNG" width="100%">
 
