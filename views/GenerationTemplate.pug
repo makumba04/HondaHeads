@@ -27,7 +27,7 @@ block content
                     |   #{generation.titulo}
                 article
                     div    
-                        img(src=`/images/${generation.rutaSlides}jpg`)
+                        img(src=`/images/${generation.rutaSlides}jpg`, class="gen_img_first")
                         h3 Historia
                         p #{generation.historia}
                 div.contenedor_caracteristicas_generacion
@@ -39,8 +39,9 @@ block content
                         div#motorizaciones_generacion
                 section.section_imagenes_generacion
                     h3 Imagenes
-                    div.video 
-                        #{generation.video}
+                    div.video
+                        iframe(src=`${generation.video}`, frameborder="0") 
+                        
                     ul.gallery.js-flickity(data-flickity-options='{ "wrapAround": true }')
                         each i in [2, 3, 4, 5]
                             li.img_modelo

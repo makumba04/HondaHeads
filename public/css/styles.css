@@ -132,6 +132,12 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        height: auto;
+    }
+
+    .video > iframe {
+        width: 45%;
+        height: 400px;
     }
 
     a{
@@ -563,6 +569,11 @@
     }
     h2{
         font-size: 0.65em;
+        line-height: 1.5;
+        padding-bottom: 0.5em;
+    }
+    h3 {
+        margin: 0.8em 0 0.8em 0;
     }
     .introduccion_h2{
         flex-direction: row;
@@ -584,23 +595,42 @@
     }
     .card {
         width: 90%;
+        height: 315px;
     }
     .card_gen {
         width: 90%;
     }
+    .img_modelo {
+        width: 90%;
+        margin: 3%;
+    }
     .gallery {
         width: 100%;
-        margin-bottom: 20%;
+        margin: 4% 0 20% 0;
+    }
+    .video {
+        margin-bottom: 0;
+    }
+    .contenedor_caracteristicas_generacion {
+        flex-direction: column;
+        margin: 10% 0 10% 0;
+    }
+    .contenedor_caracteristicas_generacion section {
+        width: 100%;
     }
     #buscar_motor input {
         width: 14em;
     }
     #tabla_motor {
+
         justify-content: left;
         margin: 1em 0 0 0;
         overflow: scroll;
         max-width: 100%;
-
+    }
+    .gen_img_first {
+        width: 100%;
+        margin: 1%;
     }
     footer {
         flex-direction: column;
@@ -609,6 +639,9 @@
     }
     footer p {
         margin: 0.5em 0 0.5em 0;
+    }
+    iframe {
+        width: 90%;
     }
     .social_wrapper1 {
         width: 75%;
@@ -656,7 +689,9 @@
         padding: 10% 0 0 0;
     }
     h2{
-        font-size: 0.75em;  
+        font-size: 0.75em;
+        line-height: 1.5;
+        padding-bottom: 0.5em;
     }
     .introduccion_h2{
         flex-direction: row;
@@ -674,10 +709,25 @@
     }
     .card {
         width: 90%;
+        height: 360px;
+    }
+    .img_modelo {
+        width: 90%;
+        margin: 3%;
     }
     .gallery {
         width: 100%;
-        margin-bottom: 20%;
+        margin: 4% 0 20% 0;
+    }
+    .video {
+        margin-bottom: 0;
+    }
+    .contenedor_caracteristicas_generacion {
+        flex-direction: column;
+        margin: 10% 0 10% 0;
+    }
+    .contenedor_caracteristicas_generacion section {
+        width: 100%;
     }
     #buscar_motor input {
         width: 14em;
@@ -687,6 +737,10 @@
         margin: 1em 0 0 0;
         overflow: scroll;
         max-width: 100%;
+    }
+    .gen_img_first {
+        width: 100%;
+        margin: 1%;
     }
     footer {
         flex-direction: column;
@@ -730,6 +784,10 @@
         font-size: 0.8em;
         margin: 2%;
     }
+    h2 {
+        font-size: 0.9em;
+        line-height: 1.5;
+    }
     nav {
         max-width: 100%;
         top: 40px;
@@ -755,9 +813,23 @@
     .card {
         width: 90%;
     }
+    .img_modelo {
+        width: 90%;
+        margin: 3%;
+    }
     .gallery {
         width: 100%;
-        margin-bottom: 17%;
+        margin: 4% 0 12% 0;
+    }
+    .video {
+        margin: 1.25em 0 0 0;
+    }
+    .contenedor_caracteristicas_generacion {
+        flex-direction: column;
+        margin: 10% 0 10% 0;
+    }
+    .contenedor_caracteristicas_generacion section {
+        width: 100%;
     }
     #buscar_motor input {
         width: 14em;
@@ -767,6 +839,10 @@
         margin: 1em 0 0 0;
         overflow: scroll;
         max-width: 100%;
+    }
+    .gen_img_first {
+        width: 100%;
+        margin: 1%;
     }
     footer {
         flex-direction: column;
@@ -811,7 +887,7 @@
     .main_wrapper {
         width: 85%;
         margin: 0 auto;
-        padding: 14% 0 2% 0;
+        padding: 15% 0 4% 0;
     }
     .introduccion_h2{
         flex-direction: row;
@@ -827,9 +903,16 @@
     .card {
         width: 66%;
     }
+    .img_modelo {
+        width: 55%;
+        margin: 3%;
+    }
     .gallery {
         width: 100%;
         margin-bottom: 10%;
+    }
+    .video {
+        margin: 1.25em 0 0 0;
     }
     #buscar_motor input {
         width: 14em;
@@ -839,6 +922,10 @@
         margin: auto;
         overflow: scroll;
         max-width: 100%;
+    }
+    .gen_img_first {
+        width: 50%;
+        margin: 2%;
     }
     footer {
         flex-direction: column;
@@ -864,7 +951,7 @@
     }
 }
 
-/* @media (min-width: 1024px) and (max-width: 1439px) {
+@media (min-width: 1024px) and (max-width: 1439px) {
 
     header {
         width: 100%;
@@ -899,9 +986,32 @@
     .card {
         width: 66%;
     }
+    .img_modelo {
+        width: 70%;
+        margin: 3%;
+    }
     .gallery {
         width: 66%;
         margin-bottom: 8%;
     }
-
-} */
+    .video {
+        margin: 1.25em 0 0 0;
+    }
+    .video > iframe {
+        width: 79%;
+        height: 450px;
+    }
+    #buscar_motor input {
+        width: 14em;
+    }
+    #tabla_motor {
+        justify-content: left;
+        margin: auto;
+        overflow: scroll;
+        max-width: 100%;
+    }
+    .gen_img_first {
+        width: 50%;
+        margin: 2%;
+    }
+}

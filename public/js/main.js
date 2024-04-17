@@ -46,7 +46,8 @@ function buscarMotores() { // Función buscarMotores: Busca los motores en la ba
 }
 function mostrarTodosMotores(motores){ // Función mostrarTodosMotores: Recibe los datos de la función de busqueda para mostrarlos en una tabla
 
-    var tablaMotor = document.getElementById('tabla_motor'); // Primero crea un handler para el contenedor de la tabla
+    var container = document.getElementById('tabla_motor'); // Primero crea un handler para el contenedor de la tabla
+    container.innerHTML = '';
 
     if(motores){ // Primero verifica si se ha encontrado un motor
 
@@ -63,12 +64,11 @@ function mostrarTodosMotores(motores){ // Función mostrarTodosMotores: Recibe l
                 "Par máximo"
             ];
 
-            var tabla = document.createElement('table');
-            tabla.setAttribute('id', 'motores');
+            var table = document.createElement('table');
+            table.setAttribute('id', 'motores');
             var thead = document.createElement('thead');
             var tr_thead = document.createElement('tr');
             var tbody = document.createElement('tbody');
-            var tr_body = document.createElement('tr');
             
             headers.forEach(headerText => {
                 const th = document.createElement('th');
@@ -77,9 +77,12 @@ function mostrarTodosMotores(motores){ // Función mostrarTodosMotores: Recibe l
             });
             
             thead.appendChild(tr_thead);
+            table.appendChild(thead);
 
             motores.forEach(motor => { // Luego usando el método de String "forEach()" itera sobre cada uno de los subarrays dentro del array de motores que recibe en JSON
 
+                
+                var tr_body = document.createElement('tr');
                 // Luego pasa por este bloque if - else para comparar lo siguiente
                 if (motor.combustible == "Hibrido / Gasolina") { // Si el combustible del motor es híbrido de gasolina
                     var combustibleClass = motor.combustible.slice(0, 7).toLowerCase(); // Convierte el input de texto en minúsculas y se queda solo con la palabra hibrido para el CSS
@@ -92,16 +95,17 @@ function mostrarTodosMotores(motores){ // Función mostrarTodosMotores: Recibe l
                 tbody.appendChild(tr_body);
             });
 
-            tabla.appendChild(tbody);
-            tablaMotor.appendChild(tabla)
+            table.appendChild(tbody);
+            container.appendChild(table)
         } else { // En caso de no recibir ni un solo dato del JSON
-            tablaMotor.innerHTML = `<p style="margin-top: 2%;">No se encontraron motores en la base de datos</p>`; // ...muestra un mensaje de advertencia
+            container.innerHTML = `<p style="margin-top: 2%;">No se encontraron motores en la base de datos</p>`; // ...muestra un mensaje de advertencia
         }
     }
 }
 function mostrarMotorPorCodigo(motores, CodigoMotor){ // Función mostrarMotorPorCodigo: Recibe dos líneas de datos, la primera es el JSON con los datos del motor y la segunda es el código de motor específico
 
-    var tablaMotor = document.getElementById('tabla_motor'); // Se crea un handler para el contenedor de que recoge a la tabla
+    var container = document.getElementById('tabla_motor'); // Se crea un handler para el contenedor de que recoge a la tabla
+    container.innerHTML = '';
 
     if(motores){ // Primero verifica si se ha encontrado un motor
 
@@ -109,12 +113,11 @@ function mostrarMotorPorCodigo(motores, CodigoMotor){ // Función mostrarMotorPo
 
             const headers = ["Combustible", "Código de Motor", "Tipo de motor", "Cilindrada", "Relación de compresión", "Diametro y carrera", "Potencia máxima", "Par máximo"];
 
-            var tabla = document.createElement('table');
-            tabla.setAttribute('id', 'motores');
+            var table = document.createElement('table');
+            table.setAttribute('id', 'motores');
             var thead = document.createElement('thead');
             var tr_thead = document.createElement('tr');
             var tbody = document.createElement('tbody');
-            var tr_body = document.createElement('tr');
             
             headers.forEach(headerText => {
                 const th = document.createElement('th');
@@ -123,9 +126,11 @@ function mostrarMotorPorCodigo(motores, CodigoMotor){ // Función mostrarMotorPo
             });
             
             thead.appendChild(tr_thead);
+            table.appendChild(thead);
 
             motores.forEach(motor => {
 
+                var tr_body = document.createElement('tr');
                 // Luego se pasa por este bloque if - else para comparar la siguiente condición
                 if (motor.combustible == "Hibrido / Gasolina") { // Si el combustible del motor es híbrido de gasolina
                     var combustibleClass = motor.combustible.slice(0, 7).toLowerCase(); // Convierte el input de texto en minúsculas y se queda solo con la palabra hibrido para el CSS
@@ -135,12 +140,12 @@ function mostrarMotorPorCodigo(motores, CodigoMotor){ // Función mostrarMotorPo
 
                 // Luego se crea el código para generar la parte de la tabla que muestra la información del motor buscado
                 tr_body.innerHTML = `<tr><td class='${combustibleClass}'>${motor.combustible}</td><td class='${combustibleClass}'>${motor.codigoMotor}</td><td class='${combustibleClass}'>${motor.tipoMotor}</td><td class='${combustibleClass}'>${motor.cilindrada}</td><td class='${combustibleClass}'>${motor.relacionCompresion}</td><td class='${combustibleClass}'>${motor.diametroCarrera}</td><td class='${combustibleClass}'>${motor.potenciaMaxima}</td><td class='${combustibleClass}'>${motor.parMaximo}</td></tr>`;
-                tbody.appendChild(tr);
+                tbody.appendChild(tr_body);
             })
-            tabla.appendChild(tbody)
-            tablaMotor.appendChild(tabla); // Se agrega al HTML interno la tabla generada
+            table.appendChild(tbody)
+            container.appendChild(table); // Se agrega al HTML interno la tabla generada
         } else { // En caso de recibir el array vacio (Lo que significa no encontrar ni una sola coincidencia)...
-            tablaMotor.innerHTML = `<p style="margin-top: 2%;">No se encontraron datos para el código de motor '${CodigoMotor}'</p>`; // ...muestra un mensaje de advertencia
+            container.innerHTML = `<p style="margin-top: 2%;">No se encontraron datos para el código de motor '${CodigoMotor}'</p>`; // ...muestra un mensaje de advertencia
         }
     }
 }
@@ -195,12 +200,12 @@ function showGenerationEngines(motorizations) {
         var tr_body = document.createElement('tr');
         // Luego pasa por este bloque if - else para comparar lo siguiente
         if (motorization.Combustible == "Hibrido / Gasolina") { // Si el combustible del motor es híbrido de gasolina
-            var combustibleClass = motorization.cmbustible.slice(0, 7).toLowerCase(); // Convierte el input de texto en minúsculas y se queda solo con la palabra hibrido para el CSS
+            var fuelClass = motorization.cmbustible.slice(0, 7).toLowerCase(); // Convierte el input de texto en minúsculas y se queda solo con la palabra hibrido para el CSS
         } else { // Si el combustible es cualquiera de los otros dos tipos
-            var combustibleClass = motorization.combustible.toLowerCase(); // Simplemente lo pasa a minúsculas
+            var fuelClass = motorization.combustible.toLowerCase(); // Simplemente lo pasa a minúsculas
         }
 
-        tr_body.innerHTML = `<td class='${combustibleClass}'>${motorization.codigoMotor}</td><td class='${combustibleClass}'>${motorization.periodoUso}</td>`;
+        tr_body.innerHTML = `<td class='${fuelClass}'>${motorization.codigoMotor}</td><td class='${fuelClass}'>${motorization.periodoUso}</td>`;
         tbody.appendChild(tr_body);
     })
 
