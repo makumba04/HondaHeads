@@ -1,3 +1,16 @@
+function modelData(model_id, generation_id) {
+    searchModelData(model_id);
+}
+function searchModelData(model_id) {
+    fetch(`http://localhost:3000/modelData/${model_id}`)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        showGenerationData(data);
+    })
+    .catch(error => console.error('Error:', error));
+}
+
 function generationData(generation_id) {
     searchGenerationData(generation_id);
     searchGenerationEngines(generation_id);

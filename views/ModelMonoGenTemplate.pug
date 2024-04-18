@@ -1,0 +1,48 @@
+extends layout
+
+block onload
+    script.
+        document.addEventListener("DOMContentLoaded", function() {
+            var modelId = #{modelo.id}
+            modelData(modelId);
+        });
+
+block content 
+    header
+        a(href="/")
+            h1 HondaHeads 
+    nav 
+        a(href="/")
+            button Inicio 
+        span >
+        a(href="#")
+            button #{modelo[0].nombreModelo}
+    .main_wrapper
+        main 
+            article
+                h2
+                    img(src="/images/HondaLogoRed.png", class="h2_logo")
+                    | Introduccion
+                .model_content
+                    img(src=`/images/${modelo[0].rutaSlides}jpg`, class="gen_img_first")
+                    p #{modelo[0].intro}
+                    h3 Historia
+                    p #{modelo[0].historia}
+                    h3 Legado
+                    p #{modelo[0].legado}
+            .contenedor_caracteristicas_generacion
+                section
+                    h3 Características básicas 
+                    #datos_modelo 
+                section 
+                    h3 Motorizaciones 
+                    div#motorizaciones_modelo
+            section.section_imagenes_generacion
+                    h3 Imagenes
+                    div.video
+                        iframe(src=`${modelo[0].video}`, frameborder="0") 
+                        
+                    ul.gallery.js-flickity(data-flickity-options='{ "wrapAround": true }')
+                        each i in [2, 3, 4, 5]
+                            li.img_modelo
+                                img(src=`/images/${modelo[0].rutaSlides}${i}.jpg`)

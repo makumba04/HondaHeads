@@ -61,6 +61,25 @@ db.connect((err) => {
     })
   });
 
+  app.get('/modelMonoGen/:id', function(req, res){
+    const {id} = req.params;
+    db.query('SELECT modelos.*, generaciones.id as g_id, generaciones.longitudChasis, generaciones.peso, generaciones.transmision, generaciones.video, generaciones.rutaSlides FROM modelos INNER JOIN generaciones ON modelos.id = generaciones.modelo_id WHERE modelos.id = ?', [id], (err, results) => {
+      if (err) throw err;
+      res.render('ModelMonoGenTemplate', {
+        title: 'modelo',
+        modelo: results
+      });
+    })
+  });
+
+  app.get('/modelData/:generation_id', (req, res) => {
+    const { generation_id } = req.params;
+    db.query('SELECT generaciones.longitudChasis, generaciones.peso, generaciones.transmision FROM generaciones INNER JOIN modelos ON modelos.id = generaciones.modelo_id WHERE modelos.id = ?', [generation_id], (err, results) =>{
+      if(err) throw err;
+      res.json(results[0])
+    });
+  });
+
   // Generations
   app.get('/generations/:id', function(req, res){
     const id = req.params.id;

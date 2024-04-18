@@ -22,7 +22,6 @@ block content
                 h2
                     img.h2_logo(src="/images/HondaLogoRed.png", alt="")
                     | Modelos
-
                 ul.gallery.js-flickity(data-flickity-options='{ "wrapAround": true }')
                     for modelo in modelos
                         li.card
@@ -31,8 +30,14 @@ block content
                             .card_body
                                 h5 #{modelo.nombreModelo}
                                 p #{modelo.periodo}
-                                a(href=`/model/${modelo.id}`)
-                                    button Ir
+                                case modelo.id
+                                    when 5
+                                        p Proximamente...
+                                        //- a(href=`/modelMonoGen/${modelo.id}`)
+                                        //-     button Ir
+                                    default
+                                        a(href=`/model/${modelo.id}`)
+                                            button Ir
             section 
                 h2
                     img.h2_logo(src="/images/HondaLogoRed.png", alt="")
