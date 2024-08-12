@@ -2,7 +2,7 @@ function modelData(model_id, generation_id) {
     searchModelData(model_id);
 }
 function searchModelData(model_id) {
-    fetch(`http://localhost:3000/modelData/${model_id}`)
+    fetch(`http://localhost:3000/showModelData/${model_id}`)
     .then(response => response.json())
     .then(data => {
         console.log(data);
@@ -16,7 +16,7 @@ function generationData(generation_id) {
     searchGenerationEngines(generation_id);
 }
 function searchGenerationData(generation_id){
-    fetch(`http://localhost:3000/generationData/${generation_id}`)
+    fetch(`http://localhost:3000/showGenerationData/${generation_id}`)
     .then(response => response.json())
     .then(data => {
         console.log(data);
@@ -25,7 +25,7 @@ function searchGenerationData(generation_id){
     .catch(error => console.error('Error:', error));
 }
 function searchGenerationEngines(generation_id) {
-    fetch(`http://localhost:3000/motorizations/${generation_id}`)
+    fetch(`http://localhost:3000/showAllMotorizations/${generation_id}`)
     .then(response => response.json()) 
     .then(data => {
         showGenerationEngines(data);
@@ -41,7 +41,7 @@ function buscarMotores() { // Función buscarMotores: Busca los motores en la ba
 
     if (CodigoMotor == '') {// Si la variable anteriormente guardada tiene un valor vacio (es decir, no se ha escrito nada en el input) y no existe filtro
 
-        fetch(`http://localhost:3000/TodosMotores`) // El programa llama por URL al método de buscar todos los motores en la API
+        fetch(`http://localhost:3000/showAllEngines`) // El programa llama por URL al método de buscar todos los motores en la API
         .then(response => response.json()) // Guarda la respuesta en formato JSON
         .then(data => { // Luego hace las siguientes acciones con los datos...
             mostrarTodosMotores(data); // Luego llama al método mostrarMotorPorCodigo enviandole los datos recibidos para que haga su función
@@ -49,7 +49,7 @@ function buscarMotores() { // Función buscarMotores: Busca los motores en la ba
         .catch(error => console.error('Error:', error)); // Si ocurre algún tipo de error en el proceso lo envía a la consola
     } else { // En el caso de si tener un input, se realiza lo siguiente
 
-        fetch(`http://localhost:3000/MotorPorCodigo/${CodigoMotor}`) // Se llama a la función de búsqueda del motor por su código correspondiente
+        fetch(`http://localhost:3000/engineByCodename/${CodigoMotor}`) // Se llama a la función de búsqueda del motor por su código correspondiente
         .then(response => response.json()) // Guarda la respuesta en formato JSON
         .then(data => { // Luego hace las siguientes acciones con los datos...
             mostrarMotorPorCodigo(data, CodigoMotor); // Luego llama al método mostrarTodosMotores enviandole los datos recibidos para que haga su función

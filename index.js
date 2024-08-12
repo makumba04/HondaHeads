@@ -1,39 +1,29 @@
-// Definición de constantes
-const express = require('express'); // Express: Llama a la libreria de Express.js
-const mysql = require('mysql2'); // MySQL: Llama a la libreria de MySQL2
+const express = require('express');
+const mysql = require('mysql2');
+require('dotenv').config()
 
-// Inicializar la app
 const app = express()
-const PORT = process.env.PORT || 3000;
 
-// Middleware
+const modelRoutes = require('./routes/modelRoutes');
+const engineRoutes = require('./routes/engineRoutes');
+const generationRoutes = require('./routes/generationRoutes');
+
+app.use('/engines', engineRoutes);
 app.use(express.json());
 app.use(express.static(__dirname + '/public'));
-
-// Cargar el motor de templates
 app.set('views', __dirname + '/views');
 app.set('view engine', 'pug');
 
-// Inicio del servidor
-
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(3000, ()=> {
+  console.log('Server up and running')
 });
 
 // Conexión a base de datos
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'hondawiki',
-});
-
-db.connect((err) => {
-  if (err) {
-    console.error('Error connecting to MySQL:', err);
-    return;
-  }
-  console.log('Connected to MySQL database');
+const db = mysql.createPool({
+  host: process.env.DATABASE_HOST,
+  user: process.env.DATABASE_ROOT,
+  password: process.env.DATABASE_PASSWORD,
+  database: process.env.DATABASE
 });
 
 // Rutas
@@ -50,75 +40,16 @@ db.connect((err) => {
   });
 
   // Models
-  app.get('/model/:id', function(req, res){
-    const {id} = req.params;
-    db.query('SELECT modelos.nombreModelo, modelos.intro, modelos.historia, modelos.legado, generaciones.id, generaciones.rutaPortada, generaciones.nombreGeneracion, generaciones.periodo FROM modelos INNER JOIN generaciones ON modelos.id = generaciones.modelo_id WHERE modelos.id = ?', [id], (err, results) => {
-      if (err) throw err;
-      res.render('ModelTemplate', {
-        title: 'modelo',
-        modelo: results
-      });
-    })
-  });
-
-  app.get('/modelMonoGen/:id', function(req, res){
-    const {id} = req.params;
-    db.query('SELECT modelos.*, generaciones.id as g_id, generaciones.longitudChasis, generaciones.peso, generaciones.transmision, generaciones.video, generaciones.rutaSlides FROM modelos INNER JOIN generaciones ON modelos.id = generaciones.modelo_id WHERE modelos.id = ?', [id], (err, results) => {
-      if (err) throw err;
-      res.render('ModelMonoGenTemplate', {
-        title: 'modelo',
-        modelo: results
-      });
-    })
-  });
-
-  app.get('/modelData/:generation_id', (req, res) => {
-    const { generation_id } = req.params;
-    db.query('SELECT generaciones.longitudChasis, generaciones.peso, generaciones.transmision FROM generaciones INNER JOIN modelos ON modelos.id = generaciones.modelo_id WHERE modelos.id = ?', [generation_id], (err, results) =>{
-      if(err) throw err;
-      res.json(results[0])
-    });
-  });
+  app.get('/showModel/:id', modelRoutes.showModel);
+  app.get('/modelMonoGen/:id', modelRoutes.showModelMonoGen);
+  app.get('/showModelData/:generation_id', modelRoutes.showModelData);
 
   // Generations
-  app.get('/generations/:id', function(req, res){
-    const id = req.params.id;
-    db.query('SELECT modelos.nombreModelo, generaciones.* FROM generaciones INNER JOIN modelos ON generaciones.modelo_id = modelos.id WHERE generaciones.id = ?', [id], (err, results) => {
-      if (err) throw err;
-      res.render('GenerationTemplate', { 
-        title: 'generation',
-        generation: results[0]
-      });
-    });
-  });
+  app.get('/showGenerationData/:generation_id', generationRoutes.showGenerationData);
+  app.get('/showGenerationById/:generation_id', generationRoutes.showGenerationById);
+  app.get('/showAllMotorizations/:generation_id', generationRoutes.showAllMotorizations);
 
-  app.get('/generationData/:generation_id', (req, res) => {
-    const { generation_id } = req.params;
-    db.query('SELECT * FROM generaciones WHERE id = ?', [generation_id], (err, results) =>{
-      if(err) throw err;
-      res.json(results[0])
-    });
-  });
+  // Engines
 
-  app.get('/motorizations/:generation_id', (req, res) => {
-    const { generation_id } = req.params;
-    db.query('SELECT motorizaciones.periodoUso, motores.codigoMotor, motores.combustible FROM motorizaciones INNER JOIN motores ON motorizaciones.codigomotor_id = motores.id WHERE motorizaciones.generacion_id = ?', [generation_id], (err, results) => {
-      if (err) throw err;
-      res.json(results);
-    });
-  });
-
-  app.get('/TodosMotores', (req, res) => {
-    db.query('SELECT * FROM motores', (err, results) => {
-      if (err) throw err;
-      res.json(results);
-    });
-  });
-
-  app.get('/MotorPorCodigo/:CodigoMotor', (req, res) => {
-    const { CodigoMotor } = req.params;
-    db.query('SELECT * FROM motores WHERE CodigoMotor LIKE ?', [`${CodigoMotor}%`], (err, results) => {
-      if (err) throw err;
-      res.json(results);
-    });
-  });
+  app.get('/showAllEngines', engineRoutes.AllEngines);
+  app.get('/engineByCodename/:Codename', engineRoutes.engineByCodename);

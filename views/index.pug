@@ -36,7 +36,7 @@ block content
                                         //- a(href=`/modelMonoGen/${modelo.id}`)
                                         //-     button Ir
                                     default
-                                        a(href=`/model/${modelo.id}`)
+                                        a(href=`/showModel/${modelo.id}`)
                                             button Ir
             section 
                 h2
@@ -47,15 +47,15 @@ block content
                     button#buscar_btn(onclick="buscarMotores()")
                         img(src="/images/LupaBuscar.png", alt="")
                 #tabla_motor
-            section 
-                h2
-                    img.h2_logo(src="/images/HondaLogoRed.png", alt="")
-                    | Redes
-                div.social_wrapper2
-                    a(href="https://www.instagram.com/hondaheadsclub/", target="_blank")
-                        img.social_image(src="/images/LogoInstaBlack.png", alt="")
-                    a(href="https://twitter.com/hondaheadsclub", target="_blank")
-                        img.social_image(src="/images/LogoXBlack.png", alt="") 
+            //- section 
+            //-     h2
+            //-         img.h2_logo(src="/images/HondaLogoRed.png", alt="")
+            //-         | Redes
+            //-     div.social_wrapper2
+            //-         a(href="https://www.instagram.com/hondaheadsclub/", target="_blank")
+            //-             img.social_image(src="/images/LogoInstaBlack.png", alt="")
+            //-         a(href="https://twitter.com/hondaheadsclub", target="_blank")
+            //-             img.social_image(src="/images/LogoXBlack.png", alt="") 
     script.
         var ogTitle = document.title;
         var pageTitle = ogTitle + " | Inicio";
